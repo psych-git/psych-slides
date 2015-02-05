@@ -1,2 +1,2 @@
 # psych-slides
-Slide show templates
+Slide show templates for building slideshows from R, using R-Markdown and slidify.

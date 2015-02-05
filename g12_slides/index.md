@@ -196,12 +196,15 @@ $$
 ---
 ## Pictures
 
-You can put pictures into your slides:.. not sure why not working???
+You can put pictures into your slides:
 
-<img src="burningr.png" alt="burning letter r" style="width: 100px;"/>
+<p style="text-align:center">
+<img src="burning_r_shutterstock.jpg" alt="burning letter r" style="width: 100px;"/>
+</p>
 
 
 --- &twocol
+
 This slides has two columns
 
 *** =left
