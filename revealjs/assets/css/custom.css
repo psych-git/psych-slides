@@ -1,0 +1,13 @@
+/* Change header level 3 color */
+.reveal h3 { 
+    color: #c1d192;
+    text-align: center;
+    font-size: 140%;
+}
+
+/* Two column layout */
+.twocol {
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+}

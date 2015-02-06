@@ -7,88 +7,106 @@
   <meta name="author" content="">
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <link rel="stylesheet" href="libraries/frameworks/revealjs/css/reveal.min.css">
-  <link rel="stylesheet" href="libraries/frameworks/revealjs/css/theme/moon.css" id="theme">
-  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/github.css" id="theme">
+  <link rel="stylesheet" href="./libraries/frameworks/revealjs/css/reveal.min.css">
+  <link rel="stylesheet" href="./libraries/frameworks/revealjs/css/theme/night.css" id="theme">
+  <link rel="stylesheet" href="./libraries/highlighters/highlight.js/css/github.css" id="theme">
   <!--[if lt IE 9]>
   <script src="lib/js/html5shiv.js"></script>
-  <![endif]-->  <link rel="stylesheet" href = "assets/css/ribbons.css">
+  <![endif]-->  <link rel="stylesheet" href = "assets/css/custom.css">
+<link rel="stylesheet" href = "assets/css/readme.md">
+<link rel="stylesheet" href = "assets/css/ribbons.css">
 
 </head>
 <body>
   <div class="reveal">
     <div class="slides">
       <section class='' data-state='' id='slide-1'>
-  
-  <style>
-.reveal h3 {
-    color: #c1d192;
-    text-align: center;
-    padding-bottom: 10px;
-    font-size: 140%;
-}
-</style>
+  <h1>reveal.js</h1>
+  <p>Presentation template using slidify and reveal.js</p>
 
-<h1>Presentation</h1>
+</section>
+<section class='' data-state='' id='slide-2'>
+  <h3>The basics</h3>
+  <p><a href="http://www.slidify.org">Slidify</a> is an R package that compiles <a href="http://rmarkdown.rstudio.com/">R-Markdown</a> scripts into html slideshows. The conversion from R-Markdown to html is done via &quot;frameworks.&quot; <a href="http://revealjs.com/">reveal.js</a> is one such framework. This template serves to illustrate some useful features of both slidify and reveal.js.</p>
 
-<h3>This is going to look fine</h3>
+<p class='fragment'>Like incremental text.</p>
 
-<p><small><a href="http://mvuorre.github.com">Matti</a></small></p>
+</section>
+<section class='' data-state='' id='slide-3'>
+  <h3>Aesthetics</h3>
+  <p>reveal.js has <em>very</em> reasonable default themes and aesthetics:</p>
+
+<h1>Level 1 header</h1>
+
+<h2>Level 2 header</h2>
+
+<h3>Level 3 header</h3>
+
+<h4>Level 4 header</h4>
+
+<p>Reg. text.<br>
+<small>
+    Small text.<br>
+    <a href="http://mvuorre.github.com">Link</a>
+</small></p>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 </section>
-<section class='' data-state='' id='slide-2'>
-  <h2>Slide 1</h2>
-  <p>Add to this slide</p>
+<section class='' data-state='' id='slide-4'>
+  
+  <p><section></p>
 
-<p><section></p>
+<h3>reveal.js also has lots of nice extra stuff</h3>
+
+<p>Make sure to press down whenever the down arrow on the right is active</p>
 
 </section>
-<section class='' data-state='' id='slide-3'>
+<section class='' data-state='soothe' id='slide-5'>
   
-  <p>Ok, here&#39;s some more text.</p>
+  <p>Like this green thing.</p>
 
 <p></section></p>
 
 </section>
-<section>
-   <section class='' data-state=''>
-    <h2>Vertical slides</h2>
-    <p>Press down</p>
+<section class='' data-state='' id='slide-6'>
+  
+  <p><section></p>
 
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   <section class='' data-state=''>
-    <p>Basement level 1</p>
+<p>We can easily generate figures from R.</p>
 
-<pre><code class="r">plot(rnorm(100,0,1))
+<pre><code class="r">library(ggplot2); library(ggthemes)
+qplot(rnorm(1000), rnorm(1000)) + theme_pander()
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-1-1.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" width="504" /></p>
+<p><img src="assets/fig/plot-1.png" title="plot of chunk plot" alt="plot of chunk plot" width="360" /></p>
 
-    <aside class='notes'>
-      
-    </aside>
-   </section>
 </section>
-<section>
-   <section class='' data-state=''>
-    <h2>Incremental reveal</h2>
-    <p class='fragment'>You can click  </p>
+<section class='' data-state='' id='slide-7'>
+  
+  <p>We can easily generate <strong>animations</strong> from R.</p>
+
+<pre><code class="r">for (i in 1:10){
+    print( qplot(rnorm(100), rnorm(100)) + 
+              scale_y_continuous(limits=c(-2,2)) +
+              scale_x_continuous(limits=c(-2,2)) + theme_pander() ) }
+</code></pre>
+
+<p><video width="360"  controls loop><source src="assets/fig/animation-.webm" />video of chunk animation</video></p>
+
+<p></section></p>
+
+</section>
+<section class='' data-state='' id='slide-8'>
+  <h1>Incremental reveal</h1>
+  <p class='fragment'>You can click  </p>
 
 <p class='fragment'>Through stuff  </p>
 
 <p class='fragment'>If you like.</p>
 
-    <aside class='notes'>
-      
-    </aside>
-   </section>
 </section>
-<section class='' data-state='' id='slide-6'>
+<section class='' data-state='' id='slide-9'>
   <h2>Incremental reveal with effects</h2>
   <ul class = "build incremental">
 <li><p>point 1  </p></li>
@@ -103,51 +121,20 @@ $('ul.incremental li').addClass('fragment')
 </script>
 
 </section>
-<section class='' data-state='' id='slide-7'>
-  
+<section class='' data-state='' id='slide-10'>
+  <h2>You can zoom into slides</h2>
   <p>Press escape to zoom out, and alt+click to zoom in</p>
 
 </section>
-<section>
-   <section class='' data-state=''>
-    <h2>Vertical Slides</h2>
-    <p>The next set of slides will be vertical slides.</p>
+<section class='' data-state='' id='slide-11'>
+  <h2>Embedded website</h2>
+  <iframe src='http://rpubs.com/mv2521/mcmc-animation' width = '960px' height = '600px'></iframe>
 
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   <section class='' data-state=''>
-    <h2>Slide 1</h2>
-
-<p>This is slide 1</p>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   <section class='' data-state=''>
-    <h2>Embedded website</h2>
-
-<iframe src='http://rpubs.com/mv2521/mcmc-animation' width = '960px' height = '600px'></iframe>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
 </section>
 <section>
    <section class='' data-state=''>
-    <h1>End</h1>
-    <style> 
-.newspaper {
-    -webkit-column-count: 3; /* Chrome, Safari, Opera */
-    -moz-column-count: 3; /* Firefox */
-    column-count: 3;
-}
-</style>
-
-<div class="newspaper">
+    <h2>Text side by side</h2>
+    <div class="twocol">
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius.
 </div>
 
@@ -156,15 +143,9 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh 
     </aside>
    </section>
 </section>
-<section class='' data-state='soothe' id='slide-10'>
-  <h2>Alternative ending</h2>
-  <style> 
-.twocol {
-    -webkit-column-count: 2; /* Chrome, Safari, Opera */
-    -moz-column-count: 2; /* Firefox */
-    column-count: 2;
-}
-</style>
+<section class='' data-state='soothe' id='slide-13'>
+  <h2>Images side by side</h2>
+  <p>We can put two images side by side using css...</p>
 
 <div class="twocol">  
 <img src='model.png' width=400>
@@ -172,15 +153,35 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh 
 </div>
 
 </section>
-<section class='' data-state='' id='slide-11'>
-  <h2>All CSS color formats are supported, like rgba() or hsl().</h2>
-  
+<section class='' data-state='' id='slide-14'>
+  <h2>R plots side by side</h2>
+  <p>Or by using a slide template saved as <em>templatename.html</em> in /assets/layouts/</p>
+
+<div style='float:left;width:48%;' class='centered'>
+  <p><img src="assets/fig/unnamed-chunk-1-1.png" alt="plot of chunk unnamed-chunk-1"> </p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><img src="assets/fig/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"> </p>
+
+</div>
+<div style='float:center;width:100%'>
+  <p>This is better for plots generated in R. Using <code>grid.arrange()</code> would probably be best for these.</p>
+
+</div>
+</section>
+<section class='' data-state='' id='slide-15'>
+  <h3>Incorporate a shiny-app to a slide</h3>
+  <div style="text-align:center;width:100%;height:500px;">
+     <iframe src="https://jalapic.shinyapps.io/soccerteams/" width="770" height="680">Get a better web browser</iframe>
+</div>
+
 </section>
     </div>
   </div>
 </body>
-  <script src="libraries/frameworks/revealjs/lib/js/head.min.js"></script>
-  <script src="libraries/frameworks/revealjs/js/reveal.min.js"></script>
+  <script src="./libraries/frameworks/revealjs/lib/js/head.min.js"></script>
+  <script src="./libraries/frameworks/revealjs/js/reveal.min.js"></script>
   <script>
   // Full list of configuration options available here:
   // https://github.com/hakimel/reveal.js#configuration
@@ -189,22 +190,22 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh 
     progress: true,
     history: true,
     center: true,
-    theme: Reveal.getQueryHash().theme || 'moon', 
+    theme: Reveal.getQueryHash().theme || 'night', 
     transition: Reveal.getQueryHash().transition || 'none', 
     dependencies: [
     // Cross-browser shim that fully implements classList -
     // https://github.com/eligrey/classList.js/
-      { src: 'libraries/frameworks/revealjs/lib/js/classList.js', condition: function() { return !document.body.classList;}},
+      { src: './libraries/frameworks/revealjs/lib/js/classList.js', condition: function() { return !document.body.classList;}},
       // Zoom in and out with Alt+click
-      { src: 'libraries/frameworks/revealjs/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: './libraries/frameworks/revealjs/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
       // Speaker notes
-      { src: 'libraries/frameworks/revealjs/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: './libraries/frameworks/revealjs/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
       // Remote control your reveal.js presentation using a touch device
-      //{ src: 'libraries/frameworks/revealjs/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+      //{ src: './libraries/frameworks/revealjs/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
       ]
   });
   </script>  <!-- LOAD HIGHLIGHTER JS FILES -->
-<script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+<script src="./libraries/highlighters/highlight.js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 <!-- DONE LOADING HIGHLIGHTER JS FILES -->
  
