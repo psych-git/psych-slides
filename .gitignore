@@ -1,2 +1,4 @@
 .cache/
 animation*.png
+widgets/
+.Rhistory

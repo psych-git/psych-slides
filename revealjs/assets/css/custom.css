@@ -1,8 +1,14 @@
-/* Change header level 3 color */
-.reveal h3 { 
+/* Custom CSS */
+/* Modified from default theme */
+
+/* Change header color */
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 { 
     color: #c1d192;
-    text-align: center;
-    font-size: 140%;
 }
 
 /* Two column layout */
@@ -11,3 +17,10 @@
     -moz-column-count: 2; /* Firefox */
     column-count: 2;
 }
+
+/* The reveal.js way of defining new slides*/
+/* Add this to slide using --- ds:greenjs */
+.greenjs .reveal .state-background {
+    background: rgba( 50, 200, 90, 0.9 );
+}
+

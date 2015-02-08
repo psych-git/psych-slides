@@ -8,7 +8,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <link rel="stylesheet" href="./libraries/frameworks/revealjs/css/reveal.min.css">
-  <link rel="stylesheet" href="./libraries/frameworks/revealjs/css/theme/night.css" id="theme">
+  <link rel="stylesheet" href="./libraries/frameworks/revealjs/css/theme/default.css" id="theme">
   <link rel="stylesheet" href="./libraries/highlighters/highlight.js/css/github.css" id="theme">
   <!--[if lt IE 9]>
   <script src="lib/js/html5shiv.js"></script>
@@ -24,21 +24,84 @@
   <h1>reveal.js</h1>
   <p>Presentation template using slidify and reveal.js</p>
 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
 </section>
 <section class='' data-state='' id='slide-2'>
   <h3>The basics</h3>
   <p><a href="http://www.slidify.org">Slidify</a> is an R package that compiles <a href="http://rmarkdown.rstudio.com/">R-Markdown</a> scripts into html slideshows. The conversion from R-Markdown to html is done via &quot;frameworks.&quot; <a href="http://revealjs.com/">reveal.js</a> is one such framework. This template serves to illustrate some useful features of both slidify and reveal.js.</p>
 
-<p class='fragment'>Like incremental text.</p>
-
 </section>
 <section class='' data-state='' id='slide-3'>
-  <h3>Aesthetics</h3>
-  <p>reveal.js has <em>very</em> reasonable default themes and aesthetics:</p>
+  <h1>Backgrounds</h1>
+  
+</section>
+<section class='' data-state='soothe' id='slide-4'>
+  
+  <p>&quot;soothe&quot;</p>
 
-<h1>Level 1 header</h1>
+</section>
+<section class='' data-state='alert' id='slide-5'>
+  
+  <p>&quot;alert&quot;</p>
 
-<h2>Level 2 header</h2>
+</section>
+<section class='' data-state='mint' id='slide-6'>
+  
+  <p>&quot;mint&quot;</p>
+
+</section>
+<section class='' data-state='blackout' id='slide-7'>
+  
+  <p>&quot;blackout&quot;</p>
+
+</section>
+<section class='' data-state='whiteout' id='slide-8'>
+  
+  <p>&quot;whiteout&quot;</p>
+
+</section>
+<section class='' data-state='sunset' id='slide-9'>
+  
+  <p>&quot;sunset&quot;</p>
+
+</section>
+<section class='' data-state='greenjs' id='slide-10'>
+  
+  <p>And finally a custom one in /assets/css/custom.css.</p>
+
+</section>
+<section class='' data-state='' id='slide-11'>
+  <h1>Code</h1>
+  
+</section>
+<section class='' data-state='' id='slide-12'>
+  
+  <pre><code class="r">library(ggplot2); library(ggthemes)
+qplot(rnorm(1000), rnorm(1000)) + theme_pander()
+</code></pre>
+
+<p><img src="assets/fig/plot-1.png" title="plot of chunk plot" alt="plot of chunk plot" width="360" /></p>
+
+</section>
+<section class='' data-state='' id='slide-13'>
+  <h3>Animations</h3>
+  <pre><code class="r">for (i in 1:10){
+    print( qplot(rnorm(100), rnorm(100)) + 
+              scale_y_continuous(limits=c(-2,2)) +
+              scale_x_continuous(limits=c(-2,2)) + theme_pander() ) }
+</code></pre>
+
+<p><video width="360"  controls loop><source src="assets/fig/animation-.webm" />video of chunk animation</video></p>
+
+</section>
+<section class='' data-state='' id='slide-14'>
+  <h1>Text Effects</h1>
+  
+</section>
+<section class='' data-state='' id='slide-15'>
+  <h1>Level 1 header</h1>
+  <h2>Level 2 header</h2>
 
 <h3>Level 3 header</h3>
 
@@ -50,102 +113,54 @@
     <a href="http://mvuorre.github.com">Link</a>
 </small></p>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</section>
+<section class='' data-state='' id='slide-16'>
+  <h3>Incremental reveal</h3>
+  <p class='fragment'>You can reveal...  </p>
+
+<p class='fragment'>...text incrementally... </p>
+
+<p class='fragment'>...by prepending text with <code>.fragment</code>.</p>
 
 </section>
-<section class='' data-state='' id='slide-4'>
+<section class='' data-state='' id='slide-17'>
+  <h3>HTML</h3>
+  <p>With a little bit of HTML, we can do all sorts of things.</p>
+
+<ol>
+<li class="fragment roll-in">roll-in</p>
+<li class="fragment fade-in">fade-in</p>
+<li class="fragment highlight-red">highlight-red</p>
+<li class="fragment highlight-green">highlight-green</p>
+<li class="fragment highlight-blue">highlight-blue</p>
+</ol>
+
+<div class="fragment grow">grow</div>
+
+<div class="fragment shrink">shrink</div>
+
+</section>
+<section class='' data-state='' id='slide-18'>
+  <h3>Math<small>jax</small></h3>
+  <p>\(p(\theta|D) = \frac{p(D|\theta) p(\theta)}{p(D)}\)</p>
+
+</section>
+<section class='' data-state='' id='slide-19'>
+  <h1>Layouts</h1>
   
-  <p><section></p>
-
-<h3>reveal.js also has lots of nice extra stuff</h3>
-
-<p>Make sure to press down whenever the down arrow on the right is active</p>
-
 </section>
-<section class='' data-state='soothe' id='slide-5'>
-  
-  <p>Like this green thing.</p>
+<section class='' data-state='' id='slide-20'>
+  <h3>Text side by side</h3>
+  <p><code>&lt;div class=&quot;twocol&quot;&gt;</code></p>
 
-<p></section></p>
-
-</section>
-<section class='' data-state='' id='slide-6'>
-  
-  <p><section></p>
-
-<p>We can easily generate figures from R.</p>
-
-<pre><code class="r">library(ggplot2); library(ggthemes)
-qplot(rnorm(1000), rnorm(1000)) + theme_pander()
-</code></pre>
-
-<p><img src="assets/fig/plot-1.png" title="plot of chunk plot" alt="plot of chunk plot" width="360" /></p>
-
-</section>
-<section class='' data-state='' id='slide-7'>
-  
-  <p>We can easily generate <strong>animations</strong> from R.</p>
-
-<pre><code class="r">for (i in 1:10){
-    print( qplot(rnorm(100), rnorm(100)) + 
-              scale_y_continuous(limits=c(-2,2)) +
-              scale_x_continuous(limits=c(-2,2)) + theme_pander() ) }
-</code></pre>
-
-<p><video width="360"  controls loop><source src="assets/fig/animation-.webm" />video of chunk animation</video></p>
-
-<p></section></p>
-
-</section>
-<section class='' data-state='' id='slide-8'>
-  <h1>Incremental reveal</h1>
-  <p class='fragment'>You can click  </p>
-
-<p class='fragment'>Through stuff  </p>
-
-<p class='fragment'>If you like.</p>
-
-</section>
-<section class='' data-state='' id='slide-9'>
-  <h2>Incremental reveal with effects</h2>
-  <ul class = "build incremental">
-<li><p>point 1  </p></li>
-<li><p class='highlight-red'>point 2  </p></li>
-<li><p class='grow'>point 3  </p></li>
-<li><p class='shrink'>point 4  </p></li>
-<li><p class='highlight-blue'>point 5  </p></li>
-</ul>
-
-<script>
-$('ul.incremental li').addClass('fragment')
-</script>
-
-</section>
-<section class='' data-state='' id='slide-10'>
-  <h2>You can zoom into slides</h2>
-  <p>Press escape to zoom out, and alt+click to zoom in</p>
-
-</section>
-<section class='' data-state='' id='slide-11'>
-  <h2>Embedded website</h2>
-  <iframe src='http://rpubs.com/mv2521/mcmc-animation' width = '960px' height = '600px'></iframe>
-
-</section>
-<section>
-   <section class='' data-state=''>
-    <h2>Text side by side</h2>
-    <div class="twocol">
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius.
+<div class="twocol">
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, does anyone ever read these. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius.
 </div>
 
-    <aside class='notes'>
-      
-    </aside>
-   </section>
 </section>
-<section class='' data-state='soothe' id='slide-13'>
-  <h2>Images side by side</h2>
-  <p>We can put two images side by side using css...</p>
+<section class='' data-state='' id='slide-21'>
+  <h3>Images side by side</h3>
+  <p>We can put two images side by side using css in /assets/css/...</p>
 
 <div class="twocol">  
 <img src='model.png' width=400>
@@ -153,8 +168,8 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh 
 </div>
 
 </section>
-<section class='' data-state='' id='slide-14'>
-  <h2>R plots side by side</h2>
+<section class='' data-state='' id='slide-22'>
+  <h3>R plots side by side</h3>
   <p>Or by using a slide template saved as <em>templatename.html</em> in /assets/layouts/</p>
 
 <div style='float:left;width:48%;' class='centered'>
@@ -170,11 +185,44 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh 
 
 </div>
 </section>
-<section class='' data-state='' id='slide-15'>
-  <h3>Incorporate a shiny-app to a slide</h3>
-  <div style="text-align:center;width:100%;height:500px;">
-     <iframe src="https://jalapic.shinyapps.io/soccerteams/" width="770" height="680">Get a better web browser</iframe>
-</div>
+<section class='' data-state='' id='slide-23'>
+  <h1>Miscellaneous</h1>
+  
+</section>
+<section class='' data-state='' id='slide-24'>
+  <h3>Keyboard shortcuts</h3>
+  <ul>
+<li>Press escape to zoom out, and alt+click to zoom in</li>
+<li>b for blackout</li>
+<li>f for fullscreen</li>
+<li>s to show slide notes</li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-25'>
+  <h3>Embedded website</h3>
+  <iframe src='http://rpubs.com/mv2521/mcmc-animation' width = '100%' height = '640px'></iframe>
+
+</section>
+<section class='' data-state='' id='slide-26'>
+  <h3>Embedded shiny app</h3>
+  <iframe src="https://jalapic.shinyapps.io/soccerteams/" width="100%" height="640px">Get a better web browser</iframe>
+
+</section>
+<section class='' data-state='' id='slide-27'>
+  <h1>Notes</h1>
+  
+</section>
+<section class='' data-state='' id='slide-28'>
+  
+  <ul>
+<li>use clear header structure and line folding in R-Studio.
+
+<ul>
+<li>Helps organize slides with lots of content</li>
+</ul></li>
+<li>works best with Chrome</li>
+</ul>
 
 </section>
     </div>
@@ -190,7 +238,7 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh 
     progress: true,
     history: true,
     center: true,
-    theme: Reveal.getQueryHash().theme || 'night', 
+    theme: Reveal.getQueryHash().theme || 'default', 
     transition: Reveal.getQueryHash().transition || 'none', 
     dependencies: [
     // Cross-browser shim that fully implements classList -
@@ -204,7 +252,21 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh 
       //{ src: './libraries/frameworks/revealjs/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
       ]
   });
-  </script>  <!-- LOAD HIGHLIGHTER JS FILES -->
+  </script>  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script> -->
+<script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="./libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
 <script src="./libraries/highlighters/highlight.js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 <!-- DONE LOADING HIGHLIGHTER JS FILES -->
