@@ -517,7 +517,7 @@ Mode(x)
 
 <p><br></p>
 
-<pre><code class="r">#data.table way:
+<pre><code class="r">#dplyr way:
 Pat_File %&gt;% group_by(Pat_ID) %&gt;% filter(Age==Mode(Age) &amp; Sex==Mode(Sex))
 </code></pre>
 
@@ -540,7 +540,7 @@ Pat_File %&gt;% group_by(Pat_ID) %&gt;% filter(Age==Mode(Age) &amp; Sex==Mode(Se
 
 <p><br></p>
 
-<pre><code class="r">#dplyr way:
+<pre><code class="r">#data.table way:
 library(data.table)
 
 setDT(Pat_File)[, .SD[Age==Mode(Age) &amp; Sex==Mode(Sex)] , by=Pat_ID]
