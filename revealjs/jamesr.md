@@ -640,7 +640,7 @@ Mode(x)
 
 
 ```r
-#dplyr way:
+#data.table way:
 Pat_File %>% group_by(Pat_ID) %>% filter(Age==Mode(Age) & Sex==Mode(Sex))
 ```
 
@@ -879,11 +879,6 @@ yrs <- c(2014, 2015, 2016)
 <br>
 
 
-```r
-j1 <- scan(text="200 120 80 7 -12 -20 15 70 85 -12 -19 -43")
-j2 <- scan(text="145 321 213 187 87 78 -23 -43 12 -35 21")
-```
-
 
 ```r
 yrs <- c(2014, 2015, 2016)
@@ -956,10 +951,10 @@ We can put two images side by side using css in /assets/css/...
 Or by using a slide template saved as _templatename.html_ in /assets/layouts/
 
 *** =left
-![plot of chunk unnamed-chunk-25](assets/fig/unnamed-chunk-25-1.png) 
+![plot of chunk unnamed-chunk-24](assets/fig/unnamed-chunk-24-1.png) 
 
 *** =right
-![plot of chunk unnamed-chunk-26](assets/fig/unnamed-chunk-26-1.png) 
+![plot of chunk unnamed-chunk-25](assets/fig/unnamed-chunk-25-1.png) 
 
 *** =fullwidth
 This is better for plots generated in R. Using ```grid.arrange()``` would probably be best for these.

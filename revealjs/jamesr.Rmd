@@ -468,7 +468,7 @@ Mode(x)
 
 ```{r, message=FALSE, warning=FALSE}
 
-#dplyr way:
+#data.table way:
 Pat_File %>% group_by(Pat_ID) %>% filter(Age==Mode(Age) & Sex==Mode(Sex))
 ```
 
@@ -633,11 +633,6 @@ yrs <- c(2014, 2015, 2016)
 
 <br>
 
-```{r}
-j1 <- scan(text="200 120 80 7 -12 -20 15 70 85 -12 -19 -43")
-j2 <- scan(text="145 321 213 187 87 78 -23 -43 12 -35 21")
-
-```
 
 ```{r, message=FALSE, warning=FALSE}
 
