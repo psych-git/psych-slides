@@ -1,0 +1,839 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="stylesheet" href="./libraries/frameworks/revealjs/css/reveal.min.css">
+  <link rel="stylesheet" href="./libraries/frameworks/revealjs/css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="./libraries/highlighters/highlight.js/css/github.css" id="theme">
+  <!--[if lt IE 9]>
+  <script src="lib/js/html5shiv.js"></script>
+  <![endif]-->  <link rel="stylesheet" href = "assets/css/custom.css">
+<link rel="stylesheet" href = "assets/css/readme.md">
+<link rel="stylesheet" href = "assets/css/ribbons.css">
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section class='' data-state='' id='slide-1'>
+  <h2>Honing our R skills &amp; mindset</h2>
+  <p><br></p>
+
+<p>Some vaguely interesting programming problems in R</p>
+
+<p><br>
+<br></p>
+
+<p><small> Presentation by <a href="http://github.com/jalapic">Prof James Curley, Columbia University</a> / <a href="http://twitter.com/jalapic">@jalapic</a> </small></p>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+</section>
+<section class='' data-state='' id='slide-2'>
+  <h3>This presentation</h3>
+  <p>You may or may not be interested to know that this presentation is written in R.  <a href="http://www.slidify.org">Slidify</a> is an R package that compiles <a href="http://rmarkdown.rstudio.com/">R-Markdown</a> scripts into html slideshows. The conversion from R-Markdown to html is done via &quot;frameworks.&quot; <a href="http://revealjs.com/">reveal.js</a> is one such framework. </p>
+
+<p><br></p>
+
+<p class='fragment'>Matti Vuore and I are trying to put together some sample templates of <font color="red">Slidify</font> to make it easier for others in the Psych department (and the world) to learn.  </p>
+
+</section>
+<section class='' data-state='' id='slide-3'>
+  <h4>Thank You Matti</h4>
+  <p><img src="clap.gif" alt="handclap"></p>
+
+</section>
+<section class='' data-state='' id='slide-4'>
+  <h3>Idea behind this presentation</h3>
+  <p><br></p>
+
+<p class='fragment'>- get everyone thinking programatically and logically about problems</p>
+
+<p><br></p>
+
+<p class='fragment'>- begin to appreciate how quick*, useful and reproducible working with R can be </p>
+
+<p><br></p>
+
+<p class='fragment'><small>*relatively speaking - e.g. compared to excel, spss, stata </small></p>
+
+<p><br></p>
+
+</section>
+<section class='' data-state='' id='slide-5'>
+  <h3>Format of the presentation</h3>
+  <p><br></p>
+
+<p class='fragment'>- Most examples are taken from <a href="stackoverflow.com">stackoverflow</a> - thank you to the community there for questions, answers and discussion.</p>
+
+<p><br></p>
+
+<p class='fragment'>- I present each problem up front with a question and a desired result. </p>
+
+<p><br></p>
+
+<p class='fragment'>- We will then spend a little while thinking about ways we might logically address the problem.</p>
+
+<p><br></p>
+
+<p class='fragment'>- I then provide some alternative solutions.</p>
+
+</section>
+<section class='' data-state='' id='slide-6'>
+  <h3>Problem 1:</h3>
+  <h4><font color="brown">How to find the number of identical elements in two vectors?</font></h4>
+
+<p><br></p>
+
+<pre><code>a &lt;- letters[1:5]
+b &lt;- c(&#39;a&#39;,&#39;k&#39;,&#39;w&#39;,&#39;p&#39;,&#39;b&#39;,&#39;b&#39;)
+
+a
+#[1] a b c d e
+
+b
+#[1] a k w p b b
+</code></pre>
+
+<p><br></p>
+
+<p align="left"><font size="4">For each element of <b>'a'</b>, return how many are found in <b>'b'</b>...</font></p>
+
+<pre><code># desired result
+# 1  2  0  0  0
+
+</code></pre>
+
+</section>
+<section class='' data-state='' id='slide-7'>
+  <h3><h4 align="left"><font color="brown">Solution 1a - A fairly slow but intuitive approach</font></h4></h3>
+  <p align="left"><font size="5"> 1. Use <font color="blue">sapply</font> to apply a function over each element of the vector in succession</font></p>
+
+<p align="left"><font size="5"> 2. That function is to <font color="blue">sum</font> all instances that are TRUE where that element is equal to each element of <b>'b'</b></font></p>
+
+<p><br></p>
+
+<pre><code class="r">a &lt;- letters[1:5]
+b &lt;- c(&#39;a&#39;,&#39;k&#39;,&#39;w&#39;,&#39;p&#39;,&#39;b&#39;,&#39;b&#39;)
+
+
+sapply(a, function(x) sum(x==b))
+</code></pre>
+
+<pre><code>## a b c d e 
+## 1 2 0 0 0
+</code></pre>
+
+<pre><code class="r"># e.g.
+a[1]==b
+</code></pre>
+
+<pre><code>## [1]  TRUE FALSE FALSE FALSE FALSE FALSE
+</code></pre>
+
+</section>
+<section class='' data-state='' id='slide-8'>
+  <h3><h4 align="left"><font color="brown">Solution 1b - A fairly fast and intuitive approach</font></h4></h3>
+  <p align="left"><font size="5"> 1. Make <b>'b'</b> a factor comprised of the levels of <b>'a'</b></font></p>
+
+<p align="left"><font size="5"> 2. Use <font color="blue">table</font> to get frequency counts of each level</font></p>
+
+<p><br></p>
+
+<pre><code class="r">#2. (medium)
+
+table(factor(b,levels=a)) 
+</code></pre>
+
+<pre><code>## 
+## a b c d e 
+## 1 2 0 0 0
+</code></pre>
+
+<pre><code class="r"># This works because when factorizing &#39;b&#39;, NAs will be produced if not in &#39;a&#39;
+factor(b, levels=a)
+</code></pre>
+
+<pre><code>## [1] a    &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; b    b   
+## Levels: a b c d e
+</code></pre>
+
+</section>
+<section class='' data-state='' id='slide-9'>
+  <h3><h4 align="left"><font color="brown">Solution 1c - The fastest </font></h4></h3>
+  <p align="left"><font size="5"> 1. Use <font color="blue">match</font> to find index of <b>'a'</b> that each <b>'b'</b> is located</font></p>
+
+<p align="left"><font size="5"> 2. Use <font color="blue">tabulate</font> to get frequency counts of each index of <b>'a'</b></font></p>
+
+<p><br></p>
+
+<pre><code class="r">tabulate(match(b, a), length(a))
+</code></pre>
+
+<pre><code>## [1] 1 2 0 0 0
+</code></pre>
+
+<pre><code class="r">a
+</code></pre>
+
+<pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot;
+</code></pre>
+
+<pre><code class="r">b
+</code></pre>
+
+<pre><code>## [1] &quot;a&quot; &quot;k&quot; &quot;w&quot; &quot;p&quot; &quot;b&quot; &quot;b&quot;
+</code></pre>
+
+<pre><code class="r">match(b,a)
+</code></pre>
+
+<pre><code>## [1]  1 NA NA NA  2  2
+</code></pre>
+
+<pre><code class="r"># tabulate works as it tabulates the indexes
+# using length(a) ensures that there is one count for each possible value.
+</code></pre>
+
+</section>
+<section class='' data-state='' id='slide-10'>
+  <h3>Problem 2:</h3>
+  <h4><font color="brown">Count number of times a value has already been seen?</font></h4>
+
+<p><br></p>
+
+<pre><code>v &lt;- c(1, 3, 1, 2, 4, 2, 1, 3)
+
+</code></pre>
+
+<p><br></p>
+
+<pre><code># desired result
+# 0 0 1 0 0 1 2 1
+
+</code></pre>
+
+</section>
+<section class='' data-state='' id='slide-11'>
+  <h3><h4 align="left"><font color="brown">Solution 2a - base r approach</font></h4></h3>
+  <p align="left"><font size="5"> 1. Use <font color="blue">ave</font> to group <b>v</b> by each unique element of <b>'v'</b> </font></p>
+
+<p align="left"><font size="5"> 2. Use <font color="blue">seq_along</font> the function to obtain occurrence number of each element</font></p>
+
+<p align="left"><font size="5"> 3. Subtract one to get how many times each has already been seen</font></p>
+
+<p><br></p>
+
+<pre><code class="r">v &lt;- c(1, 3, 1, 2, 4, 2, 1, 3)
+
+ave(v, v, FUN=seq_along)-1
+</code></pre>
+
+<pre><code>## [1] 0 0 1 0 0 1 2 1
+</code></pre>
+
+<pre><code class="r">#can you see how it works ?
+seq_along(v)
+</code></pre>
+
+<pre><code>## [1] 1 2 3 4 5 6 7 8
+</code></pre>
+
+</section>
+<section class='' data-state='' id='slide-12'>
+  <h3><h4 align="left"><font color="brown">Solution 2b - dplyr approach </font></h4></h3>
+  <p align="left"><font size="5"> 1. Those that use <font color="blue">dplyr</font> regularly may be logically more comfortable using <font color="blue">group_by</font>. </font></p>
+
+<p align="left"><font size="5"> 2. Using <font color="blue">mutate</font> adds a new variable to each observation, which by using <font color="blue">row_number</font> is the successive instance of each in this case.</font></p>
+
+<p align="left"><font size="5"> 3. Subtract one to get how many times each has already been seen rather than the exact occurence</font></p>
+
+<pre><code class="r">library(dplyr)
+data.frame(v) %&gt;% group_by(v) %&gt;% mutate(count = row_number()-1)
+</code></pre>
+
+<pre><code>## Source: local data frame [8 x 2]
+## Groups: v
+## 
+##   v count
+## 1 1     0
+## 2 3     0
+## 3 1     1
+## 4 2     0
+## 5 4     0
+## 6 2     1
+## 7 1     2
+## 8 3     1
+</code></pre>
+
+</section>
+<section class='' data-state='' id='slide-13'>
+  <h3><h4 align="left"><font color="brown">Solution 2c - not recommended but interesting </font></h4></h3>
+  <p align="left"><font size="5"> The <font color="blue">make.unique</font> function does what you think in a very useful way for our purpose, and then we use <font color="blue">regular expressions</font> to get rid of the element indexes that we don't need.</font></p>
+
+<pre><code class="r">v.u &lt;- make.unique(as.character(v)) # it only works on character vectors so you must convert first
+v.u
+</code></pre>
+
+<pre><code>## [1] &quot;1&quot;   &quot;3&quot;   &quot;1.1&quot; &quot;2&quot;   &quot;4&quot;   &quot;2.1&quot; &quot;1.2&quot; &quot;3.1&quot;
+</code></pre>
+
+<pre><code class="r">as.integer(sub(&quot;^$&quot;,&quot;0&quot;,sub(&quot;[0-9]+\\.?&quot;,&quot;&quot;,v.u)))
+</code></pre>
+
+<pre><code>## [1] 0 0 1 0 0 1 2 1
+</code></pre>
+
+<pre><code class="r">#these might help explain...
+sub(&quot;[0-9]+\\.?&quot;,&quot;&quot;,v.u)
+</code></pre>
+
+<pre><code>## [1] &quot;&quot;  &quot;&quot;  &quot;1&quot; &quot;&quot;  &quot;&quot;  &quot;1&quot; &quot;2&quot; &quot;1&quot;
+</code></pre>
+
+<pre><code class="r">tmp &lt;- sub(&quot;[0-9]+\\.?&quot;,&quot;&quot;,v.u)
+sub(&quot;^$&quot;,&quot;0&quot;, tmp)
+</code></pre>
+
+<pre><code>## [1] &quot;0&quot; &quot;0&quot; &quot;1&quot; &quot;0&quot; &quot;0&quot; &quot;1&quot; &quot;2&quot; &quot;1&quot;
+</code></pre>
+
+</section>
+<section class='' data-state='' id='slide-14'>
+  <h3>Problem 3:</h3>
+  <h4><font color="brown">Find the indices of last occurrence of the unique elements in a vector</font></h4>
+
+<p><br></p>
+
+<pre><code>q &lt;- scan(text=&quot;1 2 1 2 1 1 1 3 1 2 2 3 3 3 1 1 1 4 1 1 1 4 1 5 5 6
+                6 2 3 3 4 4 2 2 2 2 2 3 3 3 1 4 4 4 3 2 5 5 5 5&quot;)
+
+</code></pre>
+
+<p><br></p>
+
+<pre><code># desired result
+# 41 46 45 44 50 27
+
+</code></pre>
+
+</section>
+<section class='' data-state='' id='slide-15'>
+  <h3><h4 align="left"><font color="brown">Solution 3a - non duplicated values </font></h4></h3>
+  <p align="left"><font size="5"> Use <font color="blue">duplicated</font> to identify whether an element is duplicated.  The <font color="blue">fromLast</font> checks for duplicated values from the end of the vector.  All duplicated values return <b>TRUE</b>, the first instance returns <b>FALSE</b>.</font></p>
+
+<p align="left"><font size="5"> The <font color="blue">!</font> actually checks for the inverse - i.e. not duplicated, and then <font color="blue">which</font> can be used to identify the position of the element. The result then needs to be ordered according to its alphanumeric position</font></p>
+
+<p><br></p>
+
+<pre><code class="r">q &lt;- scan(text=&quot;1 2 1 2 1 1 1 3 1 2 2 3 3 3 1 1 1 4 1 1 1 4 1 5 5 6
+                6 2 3 3 4 4 2 2 2 2 2 3 3 3 1 4 4 4 3 2 5 5 5 5&quot;)
+
+
+i &lt;- which(!duplicated(q,fromLast=T))
+i[order(q[i])]
+</code></pre>
+
+<pre><code>## [1] 41 46 45 44 50 27
+</code></pre>
+
+</section>
+<section class='' data-state='' id='slide-16'>
+  <h3><h4 align="left"><font color="brown">Solution 3a - non duplicated values </font></h4></h3>
+  <p align="left"><font size="5"> Further explanation:</font></p>
+
+<p><br></p>
+
+<pre><code class="r">q &lt;- scan(text=&quot;1 2 1 2 1 1 1 3 1 2 2 3 3 3 1 1 1 4 1 1 1 4 1 5 5 6
+                6 2 3 3 4 4 2 2 2 2 2 3 3 3 1 4 4 4 3 2 5 5 5 5&quot;)
+
+duplicated(q)
+</code></pre>
+
+<pre><code>##  [1] FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE
+## [12]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE
+## [23]  TRUE FALSE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+## [34]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+## [45]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+</code></pre>
+
+<pre><code class="r">duplicated(q, fromLast=T)
+</code></pre>
+
+<pre><code>##  [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+## [12]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+## [23]  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+## [34]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE FALSE
+## [45] FALSE FALSE  TRUE  TRUE  TRUE FALSE
+</code></pre>
+
+</section>
+<section class='' data-state='' id='slide-17'>
+  <h3><h4 align="left"><font color="brown">Solution 3a - non duplicated values </font></h4></h3>
+  <p align="left"><font size="5"> Further explanation:</font></p>
+
+<p><br></p>
+
+<pre><code class="r">q &lt;- scan(text=&quot;1 2 1 2 1 1 1 3 1 2 2 3 3 3 1 1 1 4 1 1 1 4 1 5 5 6
+                6 2 3 3 4 4 2 2 2 2 2 3 3 3 1 4 4 4 3 2 5 5 5 5&quot;)
+
+!duplicated(q, fromLast=T)
+</code></pre>
+
+<pre><code>##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [12] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [23] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
+## [34] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE  TRUE
+## [45]  TRUE  TRUE FALSE FALSE FALSE  TRUE
+</code></pre>
+
+<pre><code class="r">which(!duplicated(q, fromLast=T)) #this isn&#39;t ordered yet
+</code></pre>
+
+<pre><code>## [1] 27 41 44 45 46 50
+</code></pre>
+
+</section>
+<section class='' data-state='' id='slide-18'>
+  <h3><h4 align="left"><font color="brown">Solution 3a - non duplicated values </font></h4></h3>
+  <p align="left"><font size="5"> Further explanation:</font></p>
+
+<p><br></p>
+
+<pre><code class="r">q &lt;- scan(text=&quot;1 2 1 2 1 1 1 3 1 2 2 3 3 3 1 1 1 4 1 1 1 4 1 5 5 6
+                6 2 3 3 4 4 2 2 2 2 2 3 3 3 1 4 4 4 3 2 5 5 5 5&quot;)
+
+which(!duplicated(q, fromLast=T))
+</code></pre>
+
+<pre><code>## [1] 27 41 44 45 46 50
+</code></pre>
+
+<pre><code class="r">i &lt;- which(!duplicated(q,fromLast=T))
+i[order(q[i])]
+</code></pre>
+
+<pre><code>## [1] 41 46 45 44 50 27
+</code></pre>
+
+</section>
+<section class='' data-state='' id='slide-19'>
+  <h3><h4 align="left"><font color="brown">Solution 3b - tapply </font></h4></h3>
+  <p align="left"><font size="5"> Use <font color="blue">tapply</font> to apply a function <font color="blue">max</font> over each unique value of the vector <b>'q'</b>, returning the corresponding value from the first argument, which in this case are the numbers 1 to 50 that come from <b>seq_along(q)</b>.</font></p>
+
+<p><br></p>
+
+<p align="left"><font size="5"> With <font color="blue">tapply</font> the first argument must be the same length as the input vector </font></p>
+
+<p><br></p>
+
+<pre><code class="r">q &lt;- scan(text=&quot;1 2 1 2 1 1 1 3 1 2 2 3 3 3 1 1 1 4 1 1 1 4 1 5 5 6
+                6 2 3 3 4 4 2 2 2 2 2 3 3 3 1 4 4 4 3 2 5 5 5 5&quot;)
+
+
+tapply(seq_along(q), q, max)
+</code></pre>
+
+<pre><code>##  1  2  3  4  5  6 
+## 41 46 45 44 50 27
+</code></pre>
+
+</section>
+<section class='' data-state='' id='slide-20'>
+  <h3><h4 align="left"><font color="brown">Solution 3c - security blanket dplyr approach </font></h4></h3>
+  <p align="left"><font size="5"> 1. Turn the vector into a dataframe with one variable being the vector <b>'q'</b> and the other variable being the row number. </font></p>
+
+<p align="left"><font size="5"> 2. Then use <font color="blue">group_by</font> to perform a function on each unique level of <b>'q'</b> which is to return the <b>max</b> row with <font color="blue">summarize</font> </font></p>
+
+<pre><code class="r">q &lt;- scan(text=&quot;1 2 1 2 1 1 1 3 1 2 2 3 3 3 1 1 1 4 1 1 1 4 1 5 5 6
+                6 2 3 3 4 4 2 2 2 2 2 3 3 3 1 4 4 4 3 2 5 5 5 5&quot;)
+
+
+library(dplyr)
+data.frame(q, row=1:length(q)) %&gt;% group_by(q) %&gt;%  summarize(max(row))
+</code></pre>
+
+<pre><code>## Source: local data frame [6 x 2]
+## 
+##   q max(row)
+## 1 1       41
+## 2 2       46
+## 3 3       45
+## 4 4       44
+## 5 5       50
+## 6 6       27
+</code></pre>
+
+</section>
+<section class='' data-state='' id='slide-21'>
+  <h3>Problem 4:</h3>
+  <h4><font color="brown">Remove observations with obvious typos</font></h4>
+
+<p><br></p>
+
+<p align="left"><font size="5"> Here is a dataframe called <b>Pat_File</b>. All observations should have the same <b>Sex</b> and <b>Age</b>.  When they do not and are obvious typos they need to be excluded from the dataframe. Imagine the dataframe has thousands of rows. </font></p>
+
+<p><br></p>
+
+<pre><code class="r">Pat_File
+</code></pre>
+
+<pre><code>##   Case_ID Pat_ID Sex Age
+## 1       1      1   1  33
+## 2       2      1   1  33
+## 3       3      1   1  33
+## 4       4      1   1  76
+## 5       5      2   2  19
+## 6       6      2   2  19
+## 7       7      2   1  49
+## 8       8      3   1  15
+</code></pre>
+
+</section>
+<section class='' data-state='' id='slide-22'>
+  <h3><h4 align="left"><font color="brown">Solution 4a - identify the modal value </font></h4></h3>
+  <p align="left"><font size="5"> 1. A straightforward method would be to identify the <font color="blue">mode</font> of each <b>Case_ID</b> and filter those observations for each case that do not possess the modal value. Sadly this function doesn't exist in R.</font></p>
+
+<p align="left"><font size="5"> 2. But we can make one ... </font></p>
+
+<pre><code class="r">Mode &lt;- function(x) { as.numeric(names(sort(-table(x)))[1])}
+
+x &lt;- c(3,6,4,2,4,6,4,2,4,5,7,4,3,2,1)
+Mode(x)
+</code></pre>
+
+<pre><code>## [1] 4
+</code></pre>
+
+</section>
+<section class='' data-state='' id='slide-23'>
+  <h3><h4 align="left"><font color="brown">Solution 4a - cont. </font></h4></h3>
+  <p align="left"><font size="5"> Here we <font color="blue">filter</font> using <b>dplyr</b> and our recently constructed <font color="blue">Mode</font> function: </font></p>
+
+<p><br></p>
+
+<pre><code class="r">#dplyr way:
+Pat_File %&gt;% group_by(Pat_ID) %&gt;% filter(Age==Mode(Age) &amp; Sex==Mode(Sex))
+</code></pre>
+
+<pre><code>## Source: local data frame [6 x 4]
+## Groups: Pat_ID
+## 
+##   Case_ID Pat_ID Sex Age
+## 1       1      1   1  33
+## 2       2      1   1  33
+## 3       3      1   1  33
+## 4       5      2   2  19
+## 5       6      2   2  19
+## 6       8      3   1  15
+</code></pre>
+
+</section>
+<section class='' data-state='' id='slide-24'>
+  <h3><h4 align="left"><font color="brown">Solution 4a - cont. </font></h4></h3>
+  <p align="left"><font size="5"> As an FYI, this can be done very quickly indeed in the <font color="blue">data.table</font> package. I don't plan to go through the syntax today!: </font></p>
+
+<p><br></p>
+
+<pre><code class="r">#data.table way:
+library(data.table)
+
+setDT(Pat_File)[, .SD[Age==Mode(Age) &amp; Sex==Mode(Sex)] , by=Pat_ID]
+</code></pre>
+
+<pre><code>##    Pat_ID Case_ID Sex Age
+## 1:      1       1   1  33
+## 2:      1       2   1  33
+## 3:      1       3   1  33
+## 4:      2       5   2  19
+## 5:      2       6   2  19
+## 6:      3       8   1  15
+</code></pre>
+
+</section>
+<section class='' data-state='' id='slide-25'>
+  <h3>Problem 5:</h3>
+  <h4><font color="brown">Finding the index of first changes in the elements of a vector</font></h4>
+
+<p><br></p>
+
+<pre><code>k &lt;- c(1, 1, 1, 1, 1, 1, 1, 1.5, 1.5, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2)
+
+</code></pre>
+
+<p><br></p>
+
+<pre><code># desired result
+#  1  8 10 15 18
+
+</code></pre>
+
+</section>
+<section class='' data-state='' id='slide-26'>
+  <h3><h4 align="left"><font color="brown">Solution 5a - use diff. </font></h4></h3>
+  <p align="left"><font size="5"> Here we can use <font color="blue">diff</font> to calculate the difference between each successive element of the vector <b>'k'</b>. We can then find where these are not equal to 0 using <font color="blue">which</font>. We have to add one to each result to get the index of the original vector, as well as combine with '1' to represent the first element of the vector. </font></p>
+
+<p><br></p>
+
+<pre><code class="r">c(1,1+which(diff(k)!=0))
+</code></pre>
+
+<pre><code>## [1]  1  8 10 15 18
+</code></pre>
+
+<pre><code class="r">diff(k) #note one fewer results than input values
+</code></pre>
+
+<pre><code>##  [1]  0.0  0.0  0.0  0.0  0.0  0.0  0.5  0.0  0.5  0.0  0.0  0.0  0.0 -1.0
+## [15]  0.0  0.0  1.0  0.0  0.0
+</code></pre>
+
+<pre><code class="r">which(diff(k)!=0)
+</code></pre>
+
+<pre><code>## [1]  7  9 14 17
+</code></pre>
+
+</section>
+<section class='' data-state='' id='slide-27'>
+  <h3>Problem 6:</h3>
+  <h4><font color="brown">Count the number of negative values at the end of a vector</font></h4>
+
+<p><br></p>
+
+<pre><code>200 120 80 7 -12 -20 15 70 85 -12 -19 -43
+
+# desired result
+#  3
+
+</code></pre>
+
+<p><br></p>
+
+<pre><code>145 321 213 187 87 78 -23 -43 12 -35 21
+
+# desired result
+#  0
+
+</code></pre>
+
+</section>
+<section class='' data-state='' id='slide-28'>
+  <h3><h4 align="left"><font color="brown">Solution 6a - count sign changes from end </font></h4></h3>
+  <p align="left"><font size="5"> The great function <font color="blue">rle</font> calculates runs of identical sequences. By putting  <font color="blue">sign</font> in front of the vector, it will count the runs of positive and negative numbers (represented by -1s and +1s). Then using indexing, find the last result from <b>rle</b> and return that if the last run was negative, or zero if it wasn't.</font></p>
+
+<p><br></p>
+
+<pre><code class="r">j1 &lt;- scan(text=&quot;200 120 80 7 -12 -20 15 70 85 -12 -19 -43&quot;)
+j2 &lt;- scan(text=&quot;145 321 213 187 87 78 -23 -43 12 -35 21&quot;)
+</code></pre>
+
+<pre><code class="r">r &lt;- rle(sign(j1))
+n &lt;- length(r$values)
+ifelse(r$values[n] &lt; 1, r$lengths[n], 0)
+</code></pre>
+
+<pre><code>## [1] 3
+</code></pre>
+
+<pre><code class="r">r &lt;- rle(sign(j2))
+n &lt;- length(r$values)
+ifelse(r$values[n] &lt; 1, r$lengths[n], 0)
+</code></pre>
+
+<pre><code>## [1] 0
+</code></pre>
+
+</section>
+<section class='' data-state='' id='slide-29'>
+  <h3><h4 align="left"><font color="brown">Solution 6a - count sign changes from end </font></h4></h3>
+  <p align="left"><font size="5"> Further explanation:</font></p>
+
+<pre><code class="r">j1 &lt;- scan(text=&quot;200 120 80 7 -12 -20 15 70 85 -12 -19 -43&quot;)
+
+sign(j1)
+</code></pre>
+
+<pre><code>##  [1]  1  1  1  1 -1 -1  1  1  1 -1 -1 -1
+</code></pre>
+
+<pre><code class="r">rle(sign(j1))
+</code></pre>
+
+<pre><code>## Run Length Encoding
+##   lengths: int [1:4] 4 2 3 3
+##   values : num [1:4] 1 -1 1 -1
+</code></pre>
+
+<pre><code class="r">r &lt;- rle(sign(j1))
+n &lt;- length(r$values)
+n
+</code></pre>
+
+<pre><code>## [1] 4
+</code></pre>
+
+<pre><code class="r">ifelse(r$values[n] &lt; 1, r$lengths[n], 0)
+</code></pre>
+
+<pre><code>## [1] 3
+</code></pre>
+
+</section>
+<section class='' data-state='' id='slide-30'>
+  <h3>Problem 7:</h3>
+  <h4><font color="brown">How to turn a number into a Roman numeral?</font></h4>
+
+<p><br></p>
+
+<pre><code>yrs &lt;- c(2014, 2015, 2016)
+
+# desired result
+#   MMXIV MMXV  MMXVI
+
+</code></pre>
+
+</section>
+<section class='' data-state='' id='slide-31'>
+  <h3><h4 align="left"><font color="brown">Solution 7a - sorry - trick question </font></h4></h3>
+  <p align="left"><font size="5">  There's already a function for it! It's called <font color="blue"> as.roman</font>  .</font></p>
+
+<p><br></p>
+
+<pre><code class="r">yrs &lt;- c(2014, 2015, 2016)
+
+as.roman(yrs) #cool
+</code></pre>
+
+<pre><code>## [1] MMXIV MMXV  MMXVI
+</code></pre>
+
+</section>
+<section class='' data-state='soothe' id='slide-32'>
+  <h3><font color="brown">In case you&#39;re curious about slidify</font></h3>
+  <p><br></p>
+
+<h4><font color="green">These are some of the options...</font></h4>
+
+</section>
+<section class='' data-state='' id='slide-33'>
+  <h3>HTML</h3>
+  <p>With a little bit of HTML, we can do all sorts of things.</p>
+
+<ol>
+<li class="fragment roll-in">roll-in</p>
+<li class="fragment fade-in">fade-in</p>
+<li class="fragment highlight-red">highlight-red</p>
+<li class="fragment highlight-green">highlight-green</p>
+<li class="fragment highlight-blue">highlight-blue</p>
+</ol>
+
+<div class="fragment grow">grow</div>
+
+<div class="fragment shrink">shrink</div>
+
+</section>
+<section class='' data-state='' id='slide-34'>
+  <h3>Text side by side</h3>
+  <p><code>&lt;div class=&quot;twocol&quot;&gt;</code></p>
+
+<div class="twocol">
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, does anyone ever read these. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius.
+</div>
+
+</section>
+<section class='' data-state='' id='slide-35'>
+  <h3>Images side by side</h3>
+  <p>We can put two images side by side using css in /assets/css/...</p>
+
+<div class="twocol">  
+<img src='model.png' width=400>
+<img src='model.png' width=400>
+</div>
+
+</section>
+<section class='' data-state='' id='slide-36'>
+  <h3>R plots side by side</h3>
+  <p>Or by using a slide template saved as <em>templatename.html</em> in /assets/layouts/</p>
+
+<div style='float:left;width:48%;' class='centered'>
+  <p><img src="assets/fig/unnamed-chunk-24-1.png" alt="plot of chunk unnamed-chunk-24"> </p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><img src="assets/fig/unnamed-chunk-25-1.png" alt="plot of chunk unnamed-chunk-25"> </p>
+
+</div>
+<div style='float:center;width:100%'>
+  <p>This is better for plots generated in R. Using <code>grid.arrange()</code> would probably be best for these.</p>
+
+</div>
+</section>
+<section class='' data-state='' id='slide-37'>
+  <h3>Keyboard shortcuts</h3>
+  <ul>
+<li>Press escape to zoom out, and alt+click to zoom in</li>
+<li>b for blackout</li>
+<li>f for fullscreen</li>
+<li>s to show slide notes</li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-38'>
+  <h3>Embedded shiny app</h3>
+  <iframe src="https://jalapic.shinyapps.io/soccerteams/" width="100%" height="640px">Get a better web browser</iframe>
+
+</section>
+    </div>
+  </div>
+</body>
+  <script src="./libraries/frameworks/revealjs/lib/js/head.min.js"></script>
+  <script src="./libraries/frameworks/revealjs/js/reveal.min.js"></script>
+  <script>
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: false,
+    theme: Reveal.getQueryHash().theme || 'beige', 
+    transition: Reveal.getQueryHash().transition || 'none', 
+    dependencies: [
+    // Cross-browser shim that fully implements classList -
+    // https://github.com/eligrey/classList.js/
+      { src: './libraries/frameworks/revealjs/lib/js/classList.js', condition: function() { return !document.body.classList;}},
+      // Zoom in and out with Alt+click
+      { src: './libraries/frameworks/revealjs/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      // Speaker notes
+      { src: './libraries/frameworks/revealjs/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+      // Remote control your reveal.js presentation using a touch device
+      //{ src: './libraries/frameworks/revealjs/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+      ]
+  });
+  </script>  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script> -->
+<script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="./libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+<script src="./libraries/highlighters/highlight.js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- DONE LOADING HIGHLIGHTER JS FILES -->
+ 
+
+</html>
