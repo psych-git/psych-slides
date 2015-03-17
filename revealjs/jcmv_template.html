@@ -46,6 +46,7 @@
     font-family: 'Helvetica', 'Arial', sans-serif;
 }
 
+
 </style>
 
 <h2>Making slidify presentations</h2>
@@ -58,8 +59,6 @@
 <br></p>
 
 <p><small> Presentation by <a href="http://github.com/psych-git">James Curley &amp; Matti Vuore</a> / <a href="http://twitter.com/jalapic">@jalapic</a> /  <a href="http://twitter.com/vuorre">@vuorre</a> </small></p>
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 </section>
 <section class='' data-state='' id='slide-2'>
@@ -120,6 +119,36 @@ knit        : slidify::knit2slides
 
 </section>
 <section class='' data-state='' id='slide-5'>
+  <h3>YAML</h3>
+  <p><br></p>
+
+<pre><code>revealjs    : {theme: moon, transition: none, center: &quot;false&quot;} 
+</code></pre>
+
+<p><br></p>
+
+<p><small></p>
+
+<ul>
+<li><a href="https://github.com/hakimel/reveal.js/blob/master/css/theme/source/moon.scss">theme:moon</a> refers to a clean looking solarized dark background (the one that you&#39;re looking at)</li>
+</ul>
+
+<p><br></p>
+
+<ul>
+<li><a href="http://lab.hakim.se/reveal-js/#/transitions">transition: none</a> refers to the types of transition we&#39;d like between the slides, you can find options by clicking the link. We&#39;ve just gone for the straightforward, non-distracting basic transition.</li>
+</ul>
+
+<p><br></p>
+
+<ul>
+<li><a href="http://stackoverflow.com/questions/22446161/can-i-align-reveal-js-slides-to-the-top-of-the-page">center: &quot;false&quot;</a> makes sure that all headings are fixed to the top of the slide. The default is &quot;true&quot; which would center the the headings and text vertically within each slide</li>
+</ul>
+
+<p></small></p>
+
+</section>
+<section class='' data-state='' id='slide-6'>
   <h3>Setting the default style</h3>
   <p><font size="5">Most of the slide style is set by editing the YAML.  However, you can also add in some HTML style code underneath your YAML right at the top of your RMarkdown document. This will change the look of all slides in the presentation. Here, we are changing the colors, gap between headers and body text and font type used.   (Admission - I&#39;m not sure the &#39;body&#39; one is working...)</font></p>
 
@@ -151,12 +180,12 @@ knit        : slidify::knit2slides
 </code></pre>
 
 </section>
-<section class='' data-state='' id='slide-6'>
+<section class='' data-state='' id='slide-7'>
   <h3>Setting the default style</h3>
   <p><font size="5"> Another option is to use code similar to the previous slide and save it as a CSS file in a folder &#39;assets/css&#39;.  Each custom layout can then be referred back to when demarking a new slide in RMarkdown. We&#39;ll discuss this option more later.</font></p>
 
 </section>
-<section class='' data-state='' id='slide-7'>
+<section class='' data-state='' id='slide-8'>
   <h3>Changing the look of individual slides</h3>
   <p><br>
 Probably the quickest and easiest way to change individual features of individual slides is to add little bits of HTML to our RMarkdown code.</p>
@@ -165,7 +194,7 @@ Probably the quickest and easiest way to change individual features of individua
 The next few slides provide some examples...</p>
 
 </section>
-<section class='' data-state='' id='slide-8'>
+<section class='' data-state='' id='slide-9'>
   <h3>HTML</h3>
   <p><br></p>
 
@@ -184,7 +213,7 @@ The next few slides provide some examples...</p>
 <div class="fragment shrink">shrink</div>
 
 </section>
-<section class='' data-state='' id='slide-9'>
+<section class='' data-state='' id='slide-10'>
   <h3>HTML</h3>
   <p><br></p>
 
@@ -211,7 +240,7 @@ The next few slides provide some examples...</p>
 <p><br></p>
 
 </section>
-<section class='' data-state='' id='slide-10'>
+<section class='' data-state='' id='slide-11'>
   <h3>Setting the order of appearing things</h3>
   <p><br>
 It&#39;s also possible to make things appear out of sequence on the screen:</p>
@@ -233,7 +262,7 @@ It&#39;s also possible to make things appear out of sequence on the screen:</p>
 <p><small>* if anyone has a better way of doing this let us know!</small></p>
 
 </section>
-<section class='' data-state='' id='slide-11'>
+<section class='' data-state='' id='slide-12'>
   <h3><font color="pink">Using HTML to customize slides</font></h3>
   <p><br></p>
 
@@ -250,7 +279,7 @@ It&#39;s also possible to make things appear out of sequence on the screen:</p>
 <p><br></p>
 
 </section>
-<section class='' data-state='' id='slide-12'>
+<section class='' data-state='' id='slide-13'>
   <h3><font color="pink">Using HTML to customize slides</font></h3>
   <p><br></p>
 
@@ -269,7 +298,7 @@ It&#39;s also possible to make things appear out of sequence on the screen:</p>
 <p><font size="5"> Your probably noticed that these lines are smaller than the previous slide  - yep, that&#39;s done by adding HTML tags too</font></p>
 
 </section>
-<section class='' data-state='' id='slide-13'>
+<section class='' data-state='' id='slide-14'>
   <h3><font color="pink">Using HTML to customize slides</font></h3>
   <p><br></p>
 
@@ -280,7 +309,7 @@ It&#39;s also possible to make things appear out of sequence on the screen:</p>
 <p><bdo dir="rtl">Not sure that there would ever be a need for this one</bdo></p>
 
 </section>
-<section class='' data-state='' id='slide-14'>
+<section class='' data-state='' id='slide-15'>
   <h3>Modifying individual slides with CSS</h3>
   <p><br></p>
 
@@ -289,6 +318,59 @@ It&#39;s also possible to make things appear out of sequence on the screen:</p>
 <p><br></p>
 
 <p>Now I&#39;m also writing inline CSS text but <span style="text-shadow: 2px 2px #FFFFFF">have added a shadow</span> - why you&#39;d want to is your business.</p>
+
+</section>
+<section class='' data-state='' id='slide-16'>
+  <h3>Adding in an image</h3>
+  <p>You can do this for each individual slide using HTML...</p>
+
+<p><br></p>
+
+<div style='text-align: center;'>
+    <img height='500' src='https://extension.unh.edu/sites/default/files/images/4HAnSci/inquisitive-cat300.png' />
+</div>
+
+</section>
+<section class='' data-state='' id='slide-17'>
+  <h3>Images plus text in columns</h3>
+  <p>This is some text that is going above the columns</p>
+
+<p><br></p>
+
+<div style='float:left;width:48%;' class='centered'>
+  <div style='text-align: center;'>
+    <img height='380' width= '340' src='http://www.cats.org.uk/uploads/images/pages/cat_care_main.jpg' />
+</div>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><br></p>
+
+<p class="fragment" data-fragment-index="1"><span style="color:orange;">You should see two cats</span></p>
+
+<p><br></p>
+
+<p class="fragment" data-fragment-index="2"><span style="color:yellow;">One is black and white and the other one is ginger</span></p>
+
+<p><br></p>
+
+<p class="fragment" data-fragment-index="3"><span style="color:#FF3333;">Are they friends?</span></p>
+
+<p><br></p>
+
+</div>
+<div style='float:center;width:100%'>
+  
+</div>
+</section>
+<section class='' data-state='' id='slide-18'>
+  <h3>Images in a row</h3>
+  <div id="images">
+<img height='200' width= '150' src="http://upload.wikimedia.org/wikipedia/commons/7/77/Small_stellated_dodecahedron.png">
+<img height='200' width= '150' src="http://upload.wikimedia.org/wikipedia/commons/7/77/Small_stellated_dodecahedron.png">
+<img height='200' width= '150' src="http://upload.wikimedia.org/wikipedia/commons/7/77/Small_stellated_dodecahedron.png">
+<img height='200' width= '150' src="http://upload.wikimedia.org/wikipedia/commons/7/77/Small_stellated_dodecahedron.png">
+</div>
 
 </section>
     </div>

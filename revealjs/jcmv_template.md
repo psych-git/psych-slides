@@ -11,7 +11,13 @@ widgets     : [mathjax]
 mode        : selfcontained 
 url         : {lib: ./libraries}
 knit        : slidify::knit2slides
+assets:
+  js:
+    - "http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"
+    - "http://bartaz.github.io/sandbox.js/jquery.highlight.js"
 ---
+
+
 
 <style>
 
@@ -37,6 +43,7 @@ knit        : slidify::knit2slides
     font-family: 'Helvetica', 'Arial', sans-serif;
 }
 
+
 </style>
 
 
@@ -53,7 +60,6 @@ A sort-of tutorial
 
 <small> Presentation by [James Curley & Matti Vuore](http://github.com/psych-git) / [@jalapic](http://twitter.com/jalapic) /  [@vuorre](http://twitter.com/vuorre) </small>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 ---
 
@@ -111,6 +117,31 @@ url         : {lib: ./libraries}
 knit        : slidify::knit2slides
 ---
 ```
+
+---
+
+### YAML
+
+<br>
+
+```
+revealjs    : {theme: moon, transition: none, center: "false"} 
+```
+<br>
+
+<small>
+
+- [theme:moon](https://github.com/hakimel/reveal.js/blob/master/css/theme/source/moon.scss) refers to a clean looking solarized dark background (the one that you're looking at)
+
+<br>
+
+- [transition: none](http://lab.hakim.se/reveal-js/#/transitions) refers to the types of transition we'd like between the slides, you can find options by clicking the link. We've just gone for the straightforward, non-distracting basic transition.
+
+<br>
+
+- [center: "false"](http://stackoverflow.com/questions/22446161/can-i-align-reveal-js-slides-to-the-top-of-the-page) makes sure that all headings are fixed to the top of the slide. The default is "true" which would center the the headings and text vertically within each slide
+
+</small>
 
 ---
 
@@ -302,4 +333,60 @@ As well as modifying the look of text using **RMarkdown** and <b>HTML</b>, it's 
 <br>
 
 Now I'm also writing inline CSS text but <span style="text-shadow: 2px 2px #FFFFFF">have added a shadow</span> - why you'd want to is your business.
+
+
+---
+
+### Adding in an image
+
+You can do this for each individual slide using HTML...
+
+<br>
+
+<div style='text-align: center;'>
+    <img height='500' src='https://extension.unh.edu/sites/default/files/images/4HAnSci/inquisitive-cat300.png' />
+</div>
+
+
+--- &twocol
+
+### Images plus text in columns
+
+This is some text that is going above the columns
+
+<br>
+
+
+*** =left
+<div style='text-align: center;'>
+    <img height='380' width= '340' src='http://www.cats.org.uk/uploads/images/pages/cat_care_main.jpg' />
+</div>
+
+*** =right
+
+<br>
+
+<p class="fragment" data-fragment-index="1"><span style="color:orange;">You should see two cats</span></p>
+
+<br>
+
+<p class="fragment" data-fragment-index="2"><span style="color:yellow;">One is black and white and the other one is ginger</span></p>
+
+<br>
+
+<p class="fragment" data-fragment-index="3"><span style="color:#FF3333;">Are they friends?</span></p>
+
+<br>
+
+
+---
+
+### Images in a row
+
+<div id="images">
+<img height='200' width= '150' src="http://upload.wikimedia.org/wikipedia/commons/7/77/Small_stellated_dodecahedron.png">
+<img height='200' width= '150' src="http://upload.wikimedia.org/wikipedia/commons/7/77/Small_stellated_dodecahedron.png">
+<img height='200' width= '150' src="http://upload.wikimedia.org/wikipedia/commons/7/77/Small_stellated_dodecahedron.png">
+<img height='200' width= '150' src="http://upload.wikimedia.org/wikipedia/commons/7/77/Small_stellated_dodecahedron.png">
+</div>
 
