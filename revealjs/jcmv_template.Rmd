@@ -781,8 +781,16 @@ Panel is on one side and the text on the other
 
 <br>
 
-to do
+Adding in a caption to an image is pretty easy too using the `<figure>` and `<figcaption>` HTML tags...
 
+<br>
+
+<figure>
+<div style='text-align: center;'>
+    <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/York_night.JPG/1000px-York_night.JPG' />
+</div>
+<figcaption><small>Fig1. - A view of the river Ouse at night, York, England. <br> (source = wikipedia)</small></figcaption>
+</figure>
 
 ---
 
