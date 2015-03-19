@@ -256,11 +256,14 @@ By refering to the CSS in assets/css with `<div class="customstyle1">` we get th
 <br>
 
 
-<div class="customstyle1"><small>
+<div class="customstyle1">
 
-This box has black text on a sort of khaki background - if you have better eyesight than us you could probably come up with a much nicer blend of colors to use.  Playing around with the `width`, `height` and `margin` parameters will lead to different sized boxes positioned in different locations on the slide.
-</small></div>
+If this worked you should see a box with black text on a sort of khaki background.  Playing around with the `width`, `height` and `margin` parameters will lead to different sized boxes positioned in different locations on the slide.
+</div>
 
+<br>
+
+<small>* in testing this it works locally but not after upload to github?</small>
 
 ---
 
@@ -781,7 +784,7 @@ Panel is on one side and the text on the other
 
 <br>
 
-Adding in a caption to an image is pretty easy too using the `figure<>` and `<figcaption>` HTML tags...
+Adding in a caption to an image is pretty easy too using the `<figure>` and `<figcaption>` HTML tags...
 
 <br>
 
