@@ -599,8 +599,34 @@ text in the middle
 text on the right
 
 
+--- &threecol1
 
---- &threecol
+### Three Column Layout   
+
+This slide has three columns of equal widths - using a different html layout 
+
+<br>
+
+<small>(though not sure it's the best solution)</small>
+
+<br>
+
+*** =left
+
+text on the left
+
+*** =center
+
+text in the middle
+
+
+*** =right
+
+text on the right
+
+
+
+--- &threecol1
 
 ### Three Column Layout   
 
@@ -611,14 +637,14 @@ This slide has three columns of equal widths
 *** =left
 
 <div style='text-align: center;'>
-    <img height='150' width= '100' src='http://thefeaturedcreature.com/wp-content/uploads/2012/10/16840_gross1.jpg' />
+    <img height='150' width= '150' src='http://thefeaturedcreature.com/wp-content/uploads/2012/10/16840_gross1.jpg' />
 </div>
 
 
 *** =center
 
 <div style='text-align: center;'>
-    <img height='150' width= '100' src='http://featuredcreature.com/wp-content/uploads/2011/07/Capture.jpg' />
+    <img height='150' width= '150' src='http://featuredcreature.com/wp-content/uploads/2011/07/Capture.jpg' />
 </div>
 
 
@@ -626,7 +652,7 @@ This slide has three columns of equal widths
 *** =right
 
 <div style='text-align: center;'>
-    <img height='150' width= '100' src='http://thefeaturedcreature.com/wp-content/uploads/2012/10/histrionica1.jpg' />
+    <img height='150' width= '150' src='http://thefeaturedcreature.com/wp-content/uploads/2012/10/histrionica1.jpg' />
 </div>
 
 
