@@ -709,14 +709,14 @@ This slide has three columns of equal widths
 *** =left
 
 <div style='text-align: center;'>
-    <img height='150' width= '150' src='http://thefeaturedcreature.com/wp-content/uploads/2012/10/16840_gross1.jpg' />
+    <img height='150' width= '150' src='http://upload.wikimedia.org/wikipedia/commons/a/ab/Dendrobates_pumilio.jpg' />
 </div>
 
 
 *** =center
 
 <div style='text-align: center;'>
-    <img height='150' width= '150' src='http://featuredcreature.com/wp-content/uploads/2011/07/Capture.jpg' />
+    <img height='150' width= '150' src='http://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Yellow-banded.poison.dart.frog.arp.jpg/640px-Yellow-banded.poison.dart.frog.arp.jpg' />
 </div>
 
 
@@ -724,7 +724,7 @@ This slide has three columns of equal widths
 *** =right
 
 <div style='text-align: center;'>
-    <img height='150' width= '150' src='http://thefeaturedcreature.com/wp-content/uploads/2012/10/histrionica1.jpg' />
+    <img height='150' width= '150' src='http://upload.wikimedia.org/wikipedia/commons/f/fd/DendrobatidFrog%2CPeru%2C02-02.jpg' />
 </div>
 
 
@@ -736,26 +736,26 @@ This slide has three columns of equal widths
 *** =left
 
 <div style='text-align: center;'>
-    <img height='250' width= '250' src='http://featuredcreature.com/wp-content/uploads/2011/07/Capture.jpg' />
+    <img height='250' width= '250' src='http://upload.wikimedia.org/wikipedia/commons/a/ab/Dendrobates_pumilio.jpg' />
 </div>
 
 <br>
 
 <div style='text-align: center;'>
-    <img height='250' width= '250' src='http://www.cjclandandseaphoto.com/images/tah09_dart_frog_8149.jpg' />
+    <img height='250' width= '250' src='http://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Yellow-banded.poison.dart.frog.arp.jpg/640px-Yellow-banded.poison.dart.frog.arp.jpg' />
 </div>
 
 
 *** =right
 
 <div style='text-align: center;'>
-    <img height='250' width= '250' src='http://www.aqua.org/~/media/Images/Animals/blue-poison-dart-frog/animals-blue-poison-frog-slide1.jpg' />
+    <img height='250' width= '250' src='http://upload.wikimedia.org/wikipedia/commons/f/fd/DendrobatidFrog%2CPeru%2C02-02.jpg' />
 </div>
 
 <br>
 
 <div style='text-align: center;'>
-    <img height='250' width= '250' src='http://thefeaturedcreature.com/wp-content/uploads/2012/10/histrionica1.jpg' />
+    <img height='250' width= '250' src='https://s-media-cache-ak0.pinimg.com/736x/32/93/e0/3293e0d3d20af347ffad874f4816b9f9.jpg' />
 </div>
 
 
