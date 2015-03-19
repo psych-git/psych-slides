@@ -4,7 +4,10 @@ subtitle    :
 author      : 
 job         : 
 framework   : revealjs        # {io2012, html5slides, shower, dzslides, ...}
-revealjs    : {theme: default, transition: none} # default, sky, night, beige, simple, moon, white
+revealjs    : # default, sky, night, beige, simple, moon, white
+    theme: sky
+    transition: none
+    center: "false"
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : github      # 
 widgets     : [mathjax]            # {mathjax, quiz, bootstrap}
@@ -208,3 +211,11 @@ This is better for plots generated in R. Using ```grid.arrange()``` would probab
 - use clear header structure and line folding in R-Studio.
     - Helps organize slides with lots of content
 - works best with Chrome
+
+--- 
+
+<div class="customstyle">
+
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper...
+
+</div>

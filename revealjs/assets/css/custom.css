@@ -18,6 +18,18 @@
     column-count: 2;
 }
 
+/* Just some custom stuff */
+.customstyle {
+    
+    margin-left: auto !important;
+    margin-right: auto !important;
+    color: green;
+	width: 50%;
+	height: 50%;
+	background: white;
+    
+}
+
 /* The reveal.js way of defining new slides*/
 /* Add this to slide using --- ds:greenjs */
 .greenjs .reveal .state-background {
