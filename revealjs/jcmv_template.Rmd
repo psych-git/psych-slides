@@ -577,28 +577,6 @@ This slide has two columns of unequal widths
 
 
 
---- &threecol
-
-### Three Column Layout   
-
-This slide has three columns of equal widths
-
-<br>
-
-*** =left
-
-text on the left
-
-*** =center
-
-text in the middle
-
-
-*** =right
-
-text on the right
-
-
 --- &threecol1
 
 ### Three Column Layout   
@@ -652,6 +630,69 @@ This slide has three columns of equal widths
 <div style='text-align: center;'>
     <img height='150' width= '150' src='http://thefeaturedcreature.com/wp-content/uploads/2012/10/histrionica1.jpg' />
 </div>
+
+
+--- &twocol
+
+### Make a Panel of Images
+
+
+*** =left
+
+<div style='text-align: center;'>
+    <img height='250' width= '250' src='http://featuredcreature.com/wp-content/uploads/2011/07/Capture.jpg' />
+</div>
+
+<br>
+
+<div style='text-align: center;'>
+    <img height='250' width= '250' src='http://www.cjclandandseaphoto.com/images/tah09_dart_frog_8149.jpg' />
+</div>
+
+
+*** =right
+
+<div style='text-align: center;'>
+    <img height='250' width= '250' src='http://www.aqua.org/~/media/Images/Animals/blue-poison-dart-frog/animals-blue-poison-frog-slide1.jpg' />
+</div>
+
+<br>
+
+<div style='text-align: center;'>
+    <img height='250' width= '250' src='http://thefeaturedcreature.com/wp-content/uploads/2012/10/histrionica1.jpg' />
+</div>
+
+
+--- &twocolvar1
+
+### Make a Panel of Images
+
+Panel is on one side and the text on the other
+
+<br>
+
+*** =left
+
+<div style='text-align: center;'>
+    <img height='160' width= '160' src='http://www.rspb.org.uk/community/cfs-file.ashx/__key/communityserver-blogs-components-weblogfiles/00-00-01-22-44/water-pipit-mike-langman-rspb_2D00_images.jpg' />
+    <img height='160' width= '160' src='http://cache2.artprintimages.com/p/MED/69/6983/PMOK100Z/art-print/lanie-loreth-bird-drawing-iii.jpg' />
+</div>
+
+<div style='text-align: center;'>
+    <img height='160' width= '160' src='http://cache2.allpostersimages.com/p/MED/69/6983/KMOK100Z/posters/lanie-loreth-bird-drawing-iv.jpg' />
+    <img height='160' width= '160' src='http://i.imgur.com/WtxybRcb.jpg' />
+</div>
+
+
+
+*** =right
+
+
+<p align="left"><font size="6"><span style="color:orange;">  - Here are some images in a 2x2 panel  </font></p></style>
+<br>
+<p align="left"><font size="6"><span style="color:orange;">  - This is done by using a 2 column layout and putting each row of images side-by-side within the same `<div>` </font></p></style>
+<br>
+<p align="left"><font size="6"><span style="color:orange;">  - Still working on how to adjust the gap between the two rows  </font></p></style>
 
 
 ---
