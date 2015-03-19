@@ -30,6 +30,22 @@
     
 }
 
+
+.customstyle1 {
+    
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  color: black;
+  width: 67%;
+	height: 33%;
+	background: #BDB76B;
+    
+}
+
+
+
 /* The reveal.js way of defining new slides*/
 /* Add this to slide using --- ds:greenjs */
 .greenjs .reveal .state-background {

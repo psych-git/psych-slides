@@ -43,6 +43,10 @@ assets:
     font-family: 'Helvetica', 'Arial', sans-serif;
 }
 
+.reveal body {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
 
 </style>
 
@@ -84,23 +88,57 @@ You may or may not be interested to know that this presentation is written in R.
 
 <br>
 
-* Each slide will feature some things that can be done in slidify
+.fragment Each slide will feature some things that can be done in slidify
 
 <br>
 
-* If you want to recreate the slides you can copy the themes and template from the original code
+.fragment If you want to recreate the slides you can copy the themes and template from the original code
 
 <br>
 
-* We're learning too, so we might not yet have figured out the 'best' way to do things...
+.fragment We're learning too, we have not yet figured out the 'best' way to do things ... in fact some of our methods might look downright bad to accomplished HTML/CSS folks... we're trying though
 
 ---
+
+
+### Acknowledgements
+
+<br>
+
+.fragment Thanks for reveal.js to [Hakim El Hattab](https://twitter.com/hakimel)
+
+<br>
+
+.fragment Thanks for slidify and tutorials to [Ramnath Vaidyanathan](https://twitter.com/ramnath_vaidya)
+
+<br>
+
+.fragment Thanks for slidify examples and inspiration to [Zev Ross](https://twitter.com/zevross) and [Kyle Walker](https://twitter.com/kyle_e_walker)
+
+---
+
+### Important Note
+
+<br>
+
+.fragment This presentation is still a work in progress.  Not all slides are made and some details are missing.  We shall continue to update though.
+
+<br>
+
+.fragment We're also mainly focussed here on the styles and layouts of different slides.  We aren't discussing too much how to insert R code and R output into the slides just yet - even though that's maybe the major advantage of slidify.
+
+
+
+
+
+---
+
 
 ### Setting the default style
 
 <br>
 
-These are items contained in the YAML. We will describe this in more detail later.
+These are items contained in the YAML. We will describe what the YAML does in more detail later.
 
 <br>
 
@@ -147,7 +185,7 @@ revealjs    : {theme: moon, transition: none, center: "false"}
 
 ### Setting the default style
 
-<font size="5">Most of the slide style is set by editing the YAML.  However, you can also add in some HTML style code underneath your YAML right at the top of your RMarkdown document. This will change the look of all slides in the presentation. Here, we are changing the colors, gap between headers and body text and font type used.   (Admission - I'm not sure the 'body' one is working...)</font>
+<p style="line-height: 1em"><small>Most of the slide style is set by editing the YAML.  However, you can also add in some HTML style code underneath your YAML right at the top of your RMarkdown document. This will change the look of all slides in the presentation. Here, we are changing the colors, gap between headers and body text and font type used.   (Admission - I'm not sure the 'body' one is working...)</small></p>
 
 ```
 <style>
@@ -170,6 +208,10 @@ revealjs    : {theme: moon, transition: none, center: "false"}
     font-family: 'Helvetica', 'Arial', sans-serif;
 }
 
+.reveal p {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
 .reveal body {
     font-family: 'Helvetica', 'Arial', sans-serif;
 }
@@ -183,7 +225,41 @@ revealjs    : {theme: moon, transition: none, center: "false"}
 
 ### Setting the default style
 
-<font size="5"> Another option is to use code similar to the previous slide and save it as a CSS file in a folder 'assets/css'.  Each custom layout can then be referred back to when demarking a new slide in RMarkdown. We'll discuss this option more later.</font>
+<br>
+
+<p style="line-height: 1em">Another option is to use code similar to the previous slide and save it as a CSS file in the folder 'assets/css'.  Each custom layout can then be referred back to in RMarkdown. An example would be: </p>
+
+<br>
+
+```
+.customstyle1 {
+    
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  color: black;
+  width: 67%;
+  height: 33%;
+	background: #BDB76B;
+    
+}
+```
+
+--- 
+
+### CSS in assets/css
+
+<br>
+By refering to the CSS in assets/css with `<div class="customstyle1">` we get the following result:
+
+<br>
+
+
+<div class="customstyle1"><small>
+
+This box has black text on a sort of khaki background - if you have better eyesight than us you could probably come up with a much nicer blend of colors to use.  Playing around with the `width`, `height` and `margin` parameters will lead to different sized boxes positioned in different locations on the slide.
+</small></div>
 
 
 ---
@@ -191,7 +267,7 @@ revealjs    : {theme: moon, transition: none, center: "false"}
 ### Changing the look of individual slides
 
 <br>
-Probably the quickest and easiest way to change individual features of individual slides is to add little bits of HTML to our RMarkdown code.
+Probably the quickest and easiest way to change individual features of individual slides is to add little bits of `HTML` to our RMarkdown code.
 
 <br>
 The next few slides provide some examples...
@@ -282,7 +358,7 @@ You can also make some text <b> bold </b> and other text <i> italicize </i>
 
 <br>
 
-Text <strong> can be strong </strong> or even  <em> emphasized </em> though in browsers these look the same as bold and italicized.
+Text <strong> can be strong </strong> or even  <em> emphasized </em> though in browsers these look the same as bold and italicized, unless the CSS for each has been adapted.
 
 <br>
 
@@ -345,15 +421,15 @@ with a bit of practice
 
 <br>
 
-<p style="color:blue;margin-left:30px;">This paragraph has a left margin of 30px.</p>
+<p style="color:blue;margin-left:30px;">This sentence has a left margin of 30px.</p>
 
 <br>
 
-<p style="color:yellow;margin-left:100px;">This paragraph has a left margin of 100px.</p>
+<p style="color:yellow;margin-left:100px;">This sentence has a left margin of 100px.</p>
 
 <br>
 
-<p style="color:lime;margin-right:100px;">This paragraph has a right margin of 100px.</p>
+<p style="color:lime;margin-right:100px;">This sentence has a right margin of 100px.</p>
 
 <br>
 
@@ -430,6 +506,9 @@ with a bit of practice
 
 <p align="justify"> * Consequently it has justified the text making it tight from margin to margin but we've lost our bullets - they've been replaced by asteriks.</p>
 
+<br>
+
+<p align="justify"> * You may also notice that the font is different to the body text - tried making them the same, but it's not working ?</p>
 
 ---
 

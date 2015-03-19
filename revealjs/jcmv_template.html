@@ -46,6 +46,10 @@
     font-family: 'Helvetica', 'Arial', sans-serif;
 }
 
+.reveal body {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
 
 </style>
 
@@ -80,28 +84,48 @@
   <h3>Presentation Overview</h3>
   <p><br></p>
 
-<ul>
-<li>Each slide will feature some things that can be done in slidify</li>
-</ul>
+<p class='fragment'>Each slide will feature some things that can be done in slidify</p>
 
 <p><br></p>
 
-<ul>
-<li>If you want to recreate the slides you can copy the themes and template from the original code</li>
-</ul>
+<p class='fragment'>If you want to recreate the slides you can copy the themes and template from the original code</p>
 
 <p><br></p>
 
-<ul>
-<li>We&#39;re learning too, so we might not yet have figured out the &#39;best&#39; way to do things...</li>
-</ul>
+<p class='fragment'>We&#39;re learning too, we have not yet figured out the &#39;best&#39; way to do things ... in fact some of our methods might look downright bad to accomplished HTML/CSS folks... we&#39;re trying though</p>
 
 </section>
 <section class='' data-state='' id='slide-4'>
+  <h3>Acknowledgements</h3>
+  <p><br></p>
+
+<p class='fragment'>Thanks for reveal.js to <a href="https://twitter.com/hakimel">Hakim El Hattab</a></p>
+
+<p><br></p>
+
+<p class='fragment'>Thanks for slidify and tutorials to <a href="https://twitter.com/ramnath_vaidya">Ramnath Vaidyanathan</a></p>
+
+<p><br></p>
+
+<p class='fragment'>Thanks for slidify examples and inspiration to <a href="https://twitter.com/zevross">Zev Ross</a> and <a href="https://twitter.com/kyle_e_walker">Kyle Walker</a></p>
+
+</section>
+<section class='' data-state='' id='slide-5'>
+  <h3>Important Note</h3>
+  <p><br></p>
+
+<p class='fragment'>This presentation is still a work in progress.  Not all slides are made and some details are missing.  We shall continue to update though.</p>
+
+<p><br></p>
+
+<p class='fragment'>We&#39;re also mainly focussed here on the styles and layouts of different slides.  We aren&#39;t discussing too much how to insert R code and R output into the slides just yet - even though that&#39;s maybe the major advantage of slidify.</p>
+
+</section>
+<section class='' data-state='' id='slide-6'>
   <h3>Setting the default style</h3>
   <p><br></p>
 
-<p>These are items contained in the YAML. We will describe this in more detail later.</p>
+<p>These are items contained in the YAML. We will describe what the YAML does in more detail later.</p>
 
 <p><br></p>
 
@@ -118,7 +142,7 @@ knit        : slidify::knit2slides
 </code></pre>
 
 </section>
-<section class='' data-state='' id='slide-5'>
+<section class='' data-state='' id='slide-7'>
   <h3>YAML</h3>
   <p><br></p>
 
@@ -148,9 +172,9 @@ knit        : slidify::knit2slides
 <p></small></p>
 
 </section>
-<section class='' data-state='' id='slide-6'>
+<section class='' data-state='' id='slide-8'>
   <h3>Setting the default style</h3>
-  <p><font size="5">Most of the slide style is set by editing the YAML.  However, you can also add in some HTML style code underneath your YAML right at the top of your RMarkdown document. This will change the look of all slides in the presentation. Here, we are changing the colors, gap between headers and body text and font type used.   (Admission - I&#39;m not sure the &#39;body&#39; one is working...)</font></p>
+  <p style="line-height: 1em"><small>Most of the slide style is set by editing the YAML.  However, you can also add in some HTML style code underneath your YAML right at the top of your RMarkdown document. This will change the look of all slides in the presentation. Here, we are changing the colors, gap between headers and body text and font type used.   (Admission - I'm not sure the 'body' one is working...)</small></p>
 
 <pre><code>&lt;style&gt;
 
@@ -172,6 +196,10 @@ knit        : slidify::knit2slides
     font-family: &#39;Helvetica&#39;, &#39;Arial&#39;, sans-serif;
 }
 
+.reveal p {
+    font-family: &#39;Helvetica&#39;, &#39;Arial&#39;, sans-serif;
+}
+
 .reveal body {
     font-family: &#39;Helvetica&#39;, &#39;Arial&#39;, sans-serif;
 }
@@ -180,21 +208,52 @@ knit        : slidify::knit2slides
 </code></pre>
 
 </section>
-<section class='' data-state='' id='slide-7'>
+<section class='' data-state='' id='slide-9'>
   <h3>Setting the default style</h3>
-  <p><font size="5"> Another option is to use code similar to the previous slide and save it as a CSS file in a folder &#39;assets/css&#39;.  Each custom layout can then be referred back to when demarking a new slide in RMarkdown. We&#39;ll discuss this option more later.</font></p>
+  <p><br></p>
+
+<p style="line-height: 1em">Another option is to use code similar to the previous slide and save it as a CSS file in the folder 'assets/css'.  Each custom layout can then be referred back to in RMarkdown. An example would be: </p>
+
+<p><br></p>
+
+<pre><code>.customstyle1 {
+
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  color: black;
+  width: 67%;
+  height: 33%;
+    background: #BDB76B;
+
+}
+</code></pre>
 
 </section>
-<section class='' data-state='' id='slide-8'>
+<section class='' data-state='' id='slide-10'>
+  <h3>CSS in assets/css</h3>
+  <p><br>
+By refering to the CSS in assets/css with <code>&lt;div class=&quot;customstyle1&quot;&gt;</code> we get the following result:</p>
+
+<p><br></p>
+
+<div class="customstyle1"><small>
+
+This box has black text on a sort of khaki background - if you have better eyesight than us you could probably come up with a much nicer blend of colors to use.  Playing around with the `width`, `height` and `margin` parameters will lead to different sized boxes positioned in different locations on the slide.
+</small></div>
+
+</section>
+<section class='' data-state='' id='slide-11'>
   <h3>Changing the look of individual slides</h3>
   <p><br>
-Probably the quickest and easiest way to change individual features of individual slides is to add little bits of HTML to our RMarkdown code.</p>
+Probably the quickest and easiest way to change individual features of individual slides is to add little bits of <code>HTML</code> to our RMarkdown code.</p>
 
 <p><br>
 The next few slides provide some examples...</p>
 
 </section>
-<section class='' data-state='' id='slide-9'>
+<section class='' data-state='' id='slide-12'>
   <h3>HTML</h3>
   <p><br></p>
 
@@ -213,7 +272,7 @@ The next few slides provide some examples...</p>
 <div class="fragment shrink">shrink</div>
 
 </section>
-<section class='' data-state='' id='slide-10'>
+<section class='' data-state='' id='slide-13'>
   <h3>HTML</h3>
   <p><br></p>
 
@@ -240,7 +299,7 @@ The next few slides provide some examples...</p>
 <p><br></p>
 
 </section>
-<section class='' data-state='' id='slide-11'>
+<section class='' data-state='' id='slide-14'>
   <h3>Setting the order of appearing things</h3>
   <p><br>
 It&#39;s also possible to make things appear out of sequence on the screen:</p>
@@ -262,7 +321,7 @@ It&#39;s also possible to make things appear out of sequence on the screen:</p>
 <p><small>* if anyone has a better way of doing this let us know!</small></p>
 
 </section>
-<section class='' data-state='' id='slide-12'>
+<section class='' data-state='' id='slide-15'>
   <h3><font color="pink">Using HTML to customize slides</font></h3>
   <p><br></p>
 
@@ -274,12 +333,12 @@ It&#39;s also possible to make things appear out of sequence on the screen:</p>
 
 <p><br></p>
 
-<p>Text <strong> can be strong </strong> or even  <em> emphasized </em> though in browsers these look the same as bold and italicized.</p>
+<p>Text <strong> can be strong </strong> or even  <em> emphasized </em> though in browsers these look the same as bold and italicized, unless the CSS for each has been adapted.</p>
 
 <p><br></p>
 
 </section>
-<section class='' data-state='' id='slide-13'>
+<section class='' data-state='' id='slide-16'>
   <h3><font color="pink">Using HTML to customize slides</font></h3>
   <p><br></p>
 
@@ -298,7 +357,7 @@ It&#39;s also possible to make things appear out of sequence on the screen:</p>
 <p><font size="5"> Your probably noticed that these lines are smaller than the previous slide  - yep, that&#39;s done by adding HTML tags too</font></p>
 
 </section>
-<section class='' data-state='' id='slide-14'>
+<section class='' data-state='' id='slide-17'>
   <h3><font color="pink">Using HTML to customize slides</font></h3>
   <p><br></p>
 
@@ -309,7 +368,7 @@ It&#39;s also possible to make things appear out of sequence on the screen:</p>
 <p><bdo dir="rtl">Not sure that there would ever be a need for this one</bdo></p>
 
 </section>
-<section class='' data-state='' id='slide-15'>
+<section class='' data-state='' id='slide-18'>
   <h3>Modifying individual slides with CSS</h3>
   <p><br></p>
 
@@ -320,28 +379,28 @@ It&#39;s also possible to make things appear out of sequence on the screen:</p>
 <p>Now I&#39;m also writing inline CSS text but <span style="text-shadow: 2px 2px #FFFFFF">have added a shadow</span> - why you&#39;d want to is your business.</p>
 
 </section>
-<section class='' data-state='' id='slide-16'>
+<section class='' data-state='' id='slide-19'>
   <h3>inline CSS works pretty well</h3>
   <p>with a bit of practice</p>
 
 <p><br></p>
 
-<p style="color:blue;margin-left:30px;">This paragraph has a left margin of 30px.</p>
+<p style="color:blue;margin-left:30px;">This sentence has a left margin of 30px.</p>
 
 <p><br></p>
 
-<p style="color:yellow;margin-left:100px;">This paragraph has a left margin of 100px.</p>
+<p style="color:yellow;margin-left:100px;">This sentence has a left margin of 100px.</p>
 
 <p><br></p>
 
-<p style="color:lime;margin-right:100px;">This paragraph has a right margin of 100px.</p>
+<p style="color:lime;margin-right:100px;">This sentence has a right margin of 100px.</p>
 
 <p><br></p>
 
 <p align="left"; style="color:#8A2BE2;"> This sentence is left aligned and is purple</p>
 
 </section>
-<section class='' data-state='' id='slide-17'>
+<section class='' data-state='' id='slide-20'>
   <h3>Changing line heights</h3>
   <p><br></p>
 
@@ -360,7 +419,7 @@ It&#39;s also possible to make things appear out of sequence on the screen:</p>
 <p style="margin: 100px 0">I'm a long way away from the others. </p>
 
 </section>
-<section class='' data-state='' id='slide-18'>
+<section class='' data-state='' id='slide-21'>
   <h3>Changing line heights</h3>
   <p><br></p>
 
@@ -371,14 +430,14 @@ It&#39;s also possible to make things appear out of sequence on the screen:</p>
 <p style="line-height: 1.8em">This is a really long sentence and we can change the gap between the different lines by simplying adding in a 'line-height' HTML tag</p>
 
 </section>
-<section class='' data-state='' id='slide-19'>
+<section class='' data-state='' id='slide-22'>
   <h3>Other text effects</h3>
   <p><br></p>
 
 <p><marquee behavior="scroll" direction="left" scrollamount="10">Your continuous scroll text goes here ... I wonder if this is a good idea or not ?</marquee></p>
 
 </section>
-<section class='' data-state='' id='slide-20'>
+<section class='' data-state='' id='slide-23'>
   <h3>Formatting text lists</h3>
   <p><br></p>
 
@@ -399,7 +458,7 @@ It&#39;s also possible to make things appear out of sequence on the screen:</p>
 </ul>
 
 </section>
-<section class='' data-state='' id='slide-21'>
+<section class='' data-state='' id='slide-24'>
   <h3>Formatting text lists</h3>
   <p><br></p>
 
@@ -413,8 +472,12 @@ It&#39;s also possible to make things appear out of sequence on the screen:</p>
 
 <p align="justify"> * Consequently it has justified the text making it tight from margin to margin but we've lost our bullets - they've been replaced by asteriks.</p>
 
+<p><br></p>
+
+<p align="justify"> * You may also notice that the font is different to the body text - tried making them the same, but it's not working ?</p>
+
 </section>
-<section class='' data-state='' id='slide-22'>
+<section class='' data-state='' id='slide-25'>
   <h3>Formatting text lists</h3>
   <p><br></p>
 
@@ -429,7 +492,7 @@ It&#39;s also possible to make things appear out of sequence on the screen:</p>
 </ul>
 
 </section>
-<section class='' data-state='' id='slide-23'>
+<section class='' data-state='' id='slide-26'>
   <h3>Nested text lists</h3>
   <p><br>
 I haven&#39;t found a good way of making line breaks in a nested list without using HTML tags just yet:
@@ -452,7 +515,7 @@ I haven&#39;t found a good way of making line breaks in a nested list without us
   
 
 </section>
-<section class='' data-state='' id='slide-24'>
+<section class='' data-state='' id='slide-27'>
   <h3>Formatting text lists</h3>
   <p><br></p>
 
@@ -475,7 +538,7 @@ I haven&#39;t found a good way of making line breaks in a nested list without us
 </ul>
 
 </section>
-<section class='' data-state='' id='slide-25'>
+<section class='' data-state='' id='slide-28'>
   <h3>Adding in an image</h3>
   <p>You can do this for each individual slide using HTML if you want to change positioning or size...</p>
 
@@ -486,7 +549,7 @@ I haven&#39;t found a good way of making line breaks in a nested list without us
 </div>
 
 </section>
-<section class='' data-state='' id='slide-26'>
+<section class='' data-state='' id='slide-29'>
   <h3>Images plus text in columns</h3>
   <p>This is some text that is going above the columns</p>
 
@@ -518,7 +581,7 @@ I haven&#39;t found a good way of making line breaks in a nested list without us
   
 </div>
 </section>
-<section class='' data-state='' id='slide-27'>
+<section class='' data-state='' id='slide-30'>
   <h3>Two Column Layout</h3>
   <p>This slide has two columns of unequal widths</p>
 
@@ -546,7 +609,7 @@ I haven&#39;t found a good way of making line breaks in a nested list without us
   
 </div>
 </section>
-<section class='' data-state='' id='slide-28'>
+<section class='' data-state='' id='slide-31'>
   <h3>Three Column Layout</h3>
   <p>This slide has three columns of equal widths - using a different html layout </p>
 
@@ -570,7 +633,7 @@ I haven&#39;t found a good way of making line breaks in a nested list without us
   
 </div>
 </section>
-<section class='' data-state='' id='slide-29'>
+<section class='' data-state='' id='slide-32'>
   <h3>Three Column Layout</h3>
   <p>This slide has three columns of equal widths</p>
 
@@ -598,7 +661,7 @@ I haven&#39;t found a good way of making line breaks in a nested list without us
   
 </div>
 </section>
-<section class='' data-state='' id='slide-30'>
+<section class='' data-state='' id='slide-33'>
   <h3>Make a Panel of Images</h3>
   
 <div style='float:left;width:48%;' class='centered'>
@@ -629,7 +692,7 @@ I haven&#39;t found a good way of making line breaks in a nested list without us
   
 </div>
 </section>
-<section class='' data-state='' id='slide-31'>
+<section class='' data-state='' id='slide-34'>
   <h3>Make a Panel of Images</h3>
   <p>Panel is on one side and the text on the other</p>
 
@@ -652,21 +715,21 @@ I haven&#39;t found a good way of making line breaks in a nested list without us
 <br>
 <p align="left"><font size="6"><span style="color:orange;">  - This is done by using a 2 column layout and putting each row of images side-by-side within the same <code>&lt;div&gt;</code> </font></p></style>
 <br>
-<p align="left"><font size="6"><span style="color:orange;">  - Still working on reducing the gap between the two rows  </font></p></style></p>
+<p align="left"><font size="6"><span style="color:orange;">  - Still working on how to adjust the gap between the two rows  </font></p></style></p>
 
 </div>
 <div style='float:center;width:100%'>
   
 </div>
 </section>
-<section class='' data-state='' id='slide-32'>
+<section class='' data-state='' id='slide-35'>
   <h3>Figure captions</h3>
   <p><br></p>
 
 <p>to do</p>
 
 </section>
-<section class='' data-state='' id='slide-33'>
+<section class='' data-state='' id='slide-36'>
   <h3>A dividing line</h3>
   <hr noshade size=4 color='red'>
 
@@ -679,46 +742,46 @@ I haven&#39;t found a good way of making line breaks in a nested list without us
 <p>Although this is working, I&#39;m not sure if this is the best way to do this as the <code>&lt;hr&gt;</code> tag is not supposed to be used in HTML5</p>
 
 </section>
-<section class='' data-state='' id='slide-34'>
+<section class='' data-state='' id='slide-37'>
   <h3>Backgrounds</h3>
   
 </section>
-<section class='' data-state='soothe' id='slide-35'>
+<section class='' data-state='soothe' id='slide-38'>
   
   <p>&quot;soothe&quot;</p>
 
 </section>
-<section class='' data-state='alert' id='slide-36'>
+<section class='' data-state='alert' id='slide-39'>
   
   <p>&quot;alert&quot;</p>
 
 </section>
-<section class='' data-state='mint' id='slide-37'>
+<section class='' data-state='mint' id='slide-40'>
   
   <p>&quot;mint&quot;</p>
 
 </section>
-<section class='' data-state='blackout' id='slide-38'>
+<section class='' data-state='blackout' id='slide-41'>
   
   <p>&quot;blackout&quot;</p>
 
 </section>
-<section class='' data-state='whiteout' id='slide-39'>
+<section class='' data-state='whiteout' id='slide-42'>
   
   <p>&quot;whiteout&quot;</p>
 
 </section>
-<section class='' data-state='sunset' id='slide-40'>
+<section class='' data-state='sunset' id='slide-43'>
   
   <p>&quot;sunset&quot;</p>
 
 </section>
-<section class='' data-state='greenjs' id='slide-41'>
+<section class='' data-state='greenjs' id='slide-44'>
   
   <p>And finally a custom one in /assets/css/custom.css.</p>
 
 </section>
-<section class='' data-state='' id='slide-42'>
+<section class='' data-state='' id='slide-45'>
   
   
 </section>
