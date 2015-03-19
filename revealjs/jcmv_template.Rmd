@@ -532,7 +532,7 @@ You can also write an ordered list using the `<ul>` tag
 
 
 ---
-    
+ 
 
 ### Nested text lists
 
@@ -580,6 +580,20 @@ Sometimes you might want to change the types of bullet used:
   <li>are produced by changing</li>
   <li>the ul style using css </li>
 </ul>
+
+
+---
+
+### A dividing line
+<hr noshade size=4 color='red'>
+
+<br>
+
+Above this text is a line that is red and right underneath the header.
+
+<br>
+
+Although this is working, I'm not sure if this is the best way to do this as the `<hr>` tag is not supposed to be used in HTML5
 
 
 ---
@@ -797,20 +811,62 @@ Adding in a caption to an image is pretty easy too using the `<figure>` and `<fi
 
 ---
 
-### A dividing line
-<hr noshade size=4 color='red'>
+### Figure captions
 
 <br>
 
-Above this text is a line that is red and right underneath the header.
+A more simple way may be to use `<span class="footnote">` -
 
 <br>
 
-Although this is working, I'm not sure if this is the best way to do this as the `<hr>` tag is not supposed to be used in HTML5
+<img src='http://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Ulysse_mosaique.jpeg/1024px-Ulysse_mosaique.jpeg' style="width: 450px">
+
+<small><span class="footnote">Roman Mosaic. Source: [wikipedia.com](http://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Ulysse_mosaique.jpeg/1024px-Ulysse_mosaique.jpeg)</span></small>
 
 
 ---
 
+### Embedding a youtube video
+
+<br>
+
+You may find that this does not work locally but will in a browser...
+
+<iframe width="800" height="450" src="https://www.youtube.com/embed/I95GOmLc7TA" frameborder="0" allowfullscreen></iframe>
+
+
+---
+
+### Video files
+
+<br>
+
+We've found that you can also use links to `mp4` video files using the `<video controls>` HTML tag...
+
+<br>
+
+<video controls> 
+  <source src=http://techslides.com/demos/sample-videos/small.mp4 type=video/mp4>
+ /video>
+
+---
+
+### Video files
+
+<br>
+
+Saving the same `mp4` video file to the `assets/img` folder also works using the `<video controls>` HTML tag...
+
+<br>
+
+<video controls> 
+  <source src=assets/img/samplevid.mp4 type=video/mp4>
+ /video>
+
+<br>
+
+
+---
 
 ### Backgrounds
 

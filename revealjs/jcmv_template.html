@@ -543,6 +543,19 @@ I haven&#39;t found a good way of making line breaks in a nested list without us
 
 </section>
 <section class='' data-state='' id='slide-28'>
+  <h3>A dividing line</h3>
+  <hr noshade size=4 color='red'>
+
+<p><br></p>
+
+<p>Above this text is a line that is red and right underneath the header.</p>
+
+<p><br></p>
+
+<p>Although this is working, I&#39;m not sure if this is the best way to do this as the <code>&lt;hr&gt;</code> tag is not supposed to be used in HTML5</p>
+
+</section>
+<section class='' data-state='' id='slide-29'>
   <h3>Adding in an image</h3>
   <p>You can do this for each individual slide using HTML if you want to change positioning or size...</p>
 
@@ -553,7 +566,7 @@ I haven&#39;t found a good way of making line breaks in a nested list without us
 </div>
 
 </section>
-<section class='' data-state='' id='slide-29'>
+<section class='' data-state='' id='slide-30'>
   <h3>Images plus text in columns</h3>
   <p>This is some text that is going above the columns</p>
 
@@ -585,7 +598,7 @@ I haven&#39;t found a good way of making line breaks in a nested list without us
   
 </div>
 </section>
-<section class='' data-state='' id='slide-30'>
+<section class='' data-state='' id='slide-31'>
   <h3>Two Column Layout</h3>
   <p>This slide has two columns of unequal widths</p>
 
@@ -613,7 +626,7 @@ I haven&#39;t found a good way of making line breaks in a nested list without us
   
 </div>
 </section>
-<section class='' data-state='' id='slide-31'>
+<section class='' data-state='' id='slide-32'>
   <h3>Three Column Layout</h3>
   <p>This slide has three columns of equal widths - using a different html layout </p>
 
@@ -637,7 +650,7 @@ I haven&#39;t found a good way of making line breaks in a nested list without us
   
 </div>
 </section>
-<section class='' data-state='' id='slide-32'>
+<section class='' data-state='' id='slide-33'>
   <h3>Three Column Layout</h3>
   <p>This slide has three columns of equal widths</p>
 
@@ -665,7 +678,7 @@ I haven&#39;t found a good way of making line breaks in a nested list without us
   
 </div>
 </section>
-<section class='' data-state='' id='slide-33'>
+<section class='' data-state='' id='slide-34'>
   <h3>Make a Panel of Images</h3>
   
 <div style='float:left;width:48%;' class='centered'>
@@ -696,7 +709,7 @@ I haven&#39;t found a good way of making line breaks in a nested list without us
   
 </div>
 </section>
-<section class='' data-state='' id='slide-34'>
+<section class='' data-state='' id='slide-35'>
   <h3>Make a Panel of Images</h3>
   <p>Panel is on one side and the text on the other</p>
 
@@ -726,7 +739,7 @@ I haven&#39;t found a good way of making line breaks in a nested list without us
   
 </div>
 </section>
-<section class='' data-state='' id='slide-35'>
+<section class='' data-state='' id='slide-36'>
   <h3>Figure captions</h3>
   <p><br></p>
 
@@ -742,59 +755,96 @@ I haven&#39;t found a good way of making line breaks in a nested list without us
 </figure>
 
 </section>
-<section class='' data-state='' id='slide-36'>
-  <h3>A dividing line</h3>
-  <hr noshade size=4 color='red'>
+<section class='' data-state='' id='slide-37'>
+  <h3>Figure captions</h3>
+  <p><br></p>
+
+<p>A more simple way may be to use <code>&lt;span class=&quot;footnote&quot;&gt;</code> -</p>
 
 <p><br></p>
 
-<p>Above this text is a line that is red and right underneath the header.</p>
+<p><img src='http://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Ulysse_mosaique.jpeg/1024px-Ulysse_mosaique.jpeg' style="width: 450px"></p>
 
-<p><br></p>
-
-<p>Although this is working, I&#39;m not sure if this is the best way to do this as the <code>&lt;hr&gt;</code> tag is not supposed to be used in HTML5</p>
+<p><small><span class="footnote">Roman Mosaic. Source: <a href="http://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Ulysse_mosaique.jpeg/1024px-Ulysse_mosaique.jpeg">wikipedia.com</a></span></small></p>
 
 </section>
-<section class='' data-state='' id='slide-37'>
+<section class='' data-state='' id='slide-38'>
+  <h3>Embedding a youtube video</h3>
+  <p><br></p>
+
+<p>You may find that this does not work locally but will in a browser...</p>
+
+<iframe width="800" height="450" src="https://www.youtube.com/embed/I95GOmLc7TA" frameborder="0" allowfullscreen></iframe>
+
+</section>
+<section class='' data-state='' id='slide-39'>
+  <h3>Video files</h3>
+  <p><br></p>
+
+<p>We&#39;ve found that you can also use links to <code>mp4</code> video files using the <code>&lt;video controls&gt;</code> HTML tag...</p>
+
+<p><br></p>
+
+<p><video controls> 
+  <source src=http://techslides.com/demos/sample-videos/small.mp4 type=video/mp4>
+ /video&gt;</p>
+
+</section>
+<section class='' data-state='' id='slide-40'>
+  <h3>Video files</h3>
+  <p><br></p>
+
+<p>Saving the same <code>mp4</code> video file to the <code>assets/img</code> folder also works using the <code>&lt;video controls&gt;</code> HTML tag...</p>
+
+<p><br></p>
+
+<p><video controls> 
+  <source src=assets/img/samplevid.mp4 type=video/mp4>
+ /video&gt;</p>
+
+<p><br></p>
+
+</section>
+<section class='' data-state='' id='slide-41'>
   <h3>Backgrounds</h3>
   
 </section>
-<section class='' data-state='soothe' id='slide-38'>
+<section class='' data-state='soothe' id='slide-42'>
   
   <p>&quot;soothe&quot;</p>
 
 </section>
-<section class='' data-state='alert' id='slide-39'>
+<section class='' data-state='alert' id='slide-43'>
   
   <p>&quot;alert&quot;</p>
 
 </section>
-<section class='' data-state='mint' id='slide-40'>
+<section class='' data-state='mint' id='slide-44'>
   
   <p>&quot;mint&quot;</p>
 
 </section>
-<section class='' data-state='blackout' id='slide-41'>
+<section class='' data-state='blackout' id='slide-45'>
   
   <p>&quot;blackout&quot;</p>
 
 </section>
-<section class='' data-state='whiteout' id='slide-42'>
+<section class='' data-state='whiteout' id='slide-46'>
   
   <p>&quot;whiteout&quot;</p>
 
 </section>
-<section class='' data-state='sunset' id='slide-43'>
+<section class='' data-state='sunset' id='slide-47'>
   
   <p>&quot;sunset&quot;</p>
 
 </section>
-<section class='' data-state='greenjs' id='slide-44'>
+<section class='' data-state='greenjs' id='slide-48'>
   
   <p>And finally a custom one in /assets/css/custom.css.</p>
 
 </section>
-<section class='' data-state='' id='slide-45'>
+<section class='' data-state='' id='slide-49'>
   
   
 </section>
