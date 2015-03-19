@@ -39,7 +39,7 @@ assets:
     font-family: 'Helvetica', 'Arial', sans-serif;
 }
 
-.reveal body {
+.reveal p {
     font-family: 'Helvetica', 'Arial', sans-serif;
 }
 
@@ -335,17 +335,183 @@ As well as modifying the look of text using **RMarkdown** and <b>HTML</b>, it's 
 Now I'm also writing inline CSS text but <span style="text-shadow: 2px 2px #FFFFFF">have added a shadow</span> - why you'd want to is your business.
 
 
+
+---
+
+
+### inline CSS works pretty well
+
+with a bit of practice
+
+<br>
+
+<p style="color:blue;margin-left:30px;">This paragraph has a left margin of 30px.</p>
+
+<br>
+
+<p style="color:yellow;margin-left:100px;">This paragraph has a left margin of 100px.</p>
+
+<br>
+
+<p style="color:lime;margin-right:100px;">This paragraph has a right margin of 100px.</p>
+
+<br>
+
+<p align="left"; style="color:#8A2BE2;"> This sentence is left aligned and is purple</p>
+
+---
+
+### Changing line heights
+
+<br>
+<p style="margin: 5px 0">This is line one.</p>
+<p style="margin: 5px 0">Here is another line.</p>
+<p style="margin: 8px 0">Here is yet another line.</p>
+<p style="margin: 12px 0">Do you notice the intervals getting bigger?</p>
+<p style="margin: 20px 0">Even bigger?</p>
+<p style="margin: 50px 0">This is the biggest gap yet!</p>
+<p style="margin: 100px 0">I'm a long way away from the others. </p>
+
+
+---
+
+### Changing line heights
+
+<br>
+
+<p style="line-height: 1em">This is a really long sentence and we can change the gap between the different lines by simplying adding in a 'line-height' HTML tag</p>
+
+<br>
+
+<p style="line-height: 1.8em">This is a really long sentence and we can change the gap between the different lines by simplying adding in a 'line-height' HTML tag</p>
+
+
+---
+
+### Other text effects
+
+<br>
+
+<marquee behavior="scroll" direction="left" scrollamount="10">Your continuous scroll text goes here ... I wonder if this is a good idea or not ?</marquee>
+
+
+---
+
+
+### Formatting text lists
+
+<br>
+
+* This list contains just the default formats
+
+<br>
+
+* The only extra thing written in RMarkdown are some line-break tags in HTML
+
+<br>
+
+* Notice that the starting point of each letter is different if the text wraps over multiple lines or not
+
+---
+
+
+### Formatting text lists
+
+
+<br>
+
+<p align="justify"> * This list is a bit different</p>
+
+<br>
+
+<p align="justify"> * Here we've wrapped every line in a 'p align = justify' piece of HTML</p>
+
+<br>
+
+<p align="justify"> * Consequently it has justified the text making it tight from margin to margin but we've lost our bullets - they've been replaced by asteriks.</p>
+
+
+---
+
+### Formatting text lists
+
+<br>
+
+You can also write an ordered list using the `<ul>` tag
+
+<br>
+
+<ul>
+  <li>Notice that this list uses bullets</li>
+  <li>And that everything in the list... </li>
+  <li> starts at the same point</li>
+</ul>
+
+
+
+---
+    
+
+### Nested text lists
+
+<br>
+I haven't found a good way of making line breaks in a nested list without using HTML tags just yet:
+<br>
+<br>
+
+<ul>
+<li>Choice A</li>
+<br>
+<li>Choice B
+  <ol>
+    <li>Sub item 1</li>
+    <li>Sub item 2</li>
+  </ol>
+</li>
+<br>
+<li>Choice C</li>
+<br>
+</ul>  
+  
+
+---
+
+### Formatting text lists
+
+<br>
+
+Sometimes you might want to change the types of bullet used:
+
+<br>
+
+<ul style="list-style-type:circle">
+  <li>Circles</li>
+  <li>are produced by changing</li>
+  <li>the ul style using css</li>
+</ul>
+
+
+<br>
+
+<ul style="list-style-type:square">
+  <li>Squares</li>
+  <li>are produced by changing</li>
+  <li>the ul style using css </li>
+</ul>
+
+
 ---
 
 ### Adding in an image
 
-You can do this for each individual slide using HTML...
+You can do this for each individual slide using HTML if you want to change positioning or size...
 
 <br>
 
 <div style='text-align: center;'>
-    <img height='500' src='https://extension.unh.edu/sites/default/files/images/4HAnSci/inquisitive-cat300.png' />
+    <img height='400' src='https://extension.unh.edu/sites/default/files/images/4HAnSci/inquisitive-cat300.png' />
 </div>
+
 
 
 --- &twocol
@@ -379,5 +545,146 @@ This is some text that is going above the columns
 <br>
 
 
+
+
+--- &twocolvar
+
+### Two Column Layout   
+
+This slide has two columns of unequal widths
+
+<br>
+
+*** =left
+
+<div style='text-align: center;'>
+    <img height='380' width= '300' src='http://www.wildlifeextra.com/resources/listimg/world/Africa_13/meerkat@body.jpg' />
+</div>
+
+
+*** =right
+
+
+<p align="justify"><font size="5"><span style="color:teal;">  - this side is much wider than the picture side of the slide, and takes up far more space </p></font></style>
+
+<br>
+
+<p align="justify"><font size="5"><span style="color:teal;">  - this is done by saving a default layout in assets/layouts and referring to it at the slide divider </p></font></style>
+
+<br>
+
+<p align="justify"><font size="5"><span style="color:teal;">   - the width of the picture is 300px </p></font></style>
+
+
+
+--- &threecol
+
+### Three Column Layout   
+
+This slide has three columns of equal widths
+
+<br>
+
+*** =left
+
+text on the left
+
+*** =center
+
+text in the middle
+
+
+*** =right
+
+text on the right
+
+
+
+--- &threecol
+
+### Three Column Layout   
+
+This slide has three columns of equal widths
+
+<br>
+
+*** =left
+
+<div style='text-align: center;'>
+    <img height='150' width= '100' src='http://thefeaturedcreature.com/wp-content/uploads/2012/10/16840_gross1.jpg' />
+</div>
+
+
+*** =center
+
+<div style='text-align: center;'>
+    <img height='150' width= '100' src='http://featuredcreature.com/wp-content/uploads/2011/07/Capture.jpg' />
+</div>
+
+
+
+*** =right
+
+<div style='text-align: center;'>
+    <img height='150' width= '100' src='http://thefeaturedcreature.com/wp-content/uploads/2012/10/histrionica1.jpg' />
+</div>
+
+
 ---
 
+
+### Figure captions
+
+<br>
+
+to do
+
+
+---
+
+### A dividing line
+<hr noshade size=4 color='red'>
+
+<br>
+
+Above this text is a line that is red and right underneath the header.
+
+<br>
+
+Although this is working, I'm not sure if this is the best way to do this as the `<hr>` tag is not supposed to be used in HTML5
+
+
+---
+
+
+### Backgrounds
+
+--- ds:soothe
+
+"soothe"
+
+--- ds:alert
+
+"alert"
+
+--- ds:mint
+
+"mint"
+
+--- ds:blackout
+
+"blackout"
+
+--- ds:whiteout
+
+"whiteout"
+
+--- ds:sunset
+
+"sunset"
+
+--- ds:greenjs
+
+And finally a custom one in /assets/css/custom.css.
+
+---

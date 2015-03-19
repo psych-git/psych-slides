@@ -42,7 +42,7 @@
     font-family: 'Helvetica', 'Arial', sans-serif;
 }
 
-.reveal body {
+.reveal p {
     font-family: 'Helvetica', 'Arial', sans-serif;
 }
 
@@ -321,17 +321,172 @@ It&#39;s also possible to make things appear out of sequence on the screen:</p>
 
 </section>
 <section class='' data-state='' id='slide-16'>
+  <h3>inline CSS works pretty well</h3>
+  <p>with a bit of practice</p>
+
+<p><br></p>
+
+<p style="color:blue;margin-left:30px;">This paragraph has a left margin of 30px.</p>
+
+<p><br></p>
+
+<p style="color:yellow;margin-left:100px;">This paragraph has a left margin of 100px.</p>
+
+<p><br></p>
+
+<p style="color:lime;margin-right:100px;">This paragraph has a right margin of 100px.</p>
+
+<p><br></p>
+
+<p align="left"; style="color:#8A2BE2;"> This sentence is left aligned and is purple</p>
+
+</section>
+<section class='' data-state='' id='slide-17'>
+  <h3>Changing line heights</h3>
+  <p><br></p>
+
+<p style="margin: 5px 0">This is line one.</p>
+
+<p style="margin: 5px 0">Here is another line.</p>
+
+<p style="margin: 8px 0">Here is yet another line.</p>
+
+<p style="margin: 12px 0">Do you notice the intervals getting bigger?</p>
+
+<p style="margin: 20px 0">Even bigger?</p>
+
+<p style="margin: 50px 0">This is the biggest gap yet!</p>
+
+<p style="margin: 100px 0">I'm a long way away from the others. </p>
+
+</section>
+<section class='' data-state='' id='slide-18'>
+  <h3>Changing line heights</h3>
+  <p><br></p>
+
+<p style="line-height: 1em">This is a really long sentence and we can change the gap between the different lines by simplying adding in a 'line-height' HTML tag</p>
+
+<p><br></p>
+
+<p style="line-height: 1.8em">This is a really long sentence and we can change the gap between the different lines by simplying adding in a 'line-height' HTML tag</p>
+
+</section>
+<section class='' data-state='' id='slide-19'>
+  <h3>Other text effects</h3>
+  <p><br></p>
+
+<p><marquee behavior="scroll" direction="left" scrollamount="10">Your continuous scroll text goes here ... I wonder if this is a good idea or not ?</marquee></p>
+
+</section>
+<section class='' data-state='' id='slide-20'>
+  <h3>Formatting text lists</h3>
+  <p><br></p>
+
+<ul>
+<li>This list contains just the default formats</li>
+</ul>
+
+<p><br></p>
+
+<ul>
+<li>The only extra thing written in RMarkdown are some line-break tags in HTML</li>
+</ul>
+
+<p><br></p>
+
+<ul>
+<li>Notice that the starting point of each letter is different if the text wraps over multiple lines or not</li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-21'>
+  <h3>Formatting text lists</h3>
+  <p><br></p>
+
+<p align="justify"> * This list is a bit different</p>
+
+<p><br></p>
+
+<p align="justify"> * Here we've wrapped every line in a 'p align = justify' piece of HTML</p>
+
+<p><br></p>
+
+<p align="justify"> * Consequently it has justified the text making it tight from margin to margin but we've lost our bullets - they've been replaced by asteriks.</p>
+
+</section>
+<section class='' data-state='' id='slide-22'>
+  <h3>Formatting text lists</h3>
+  <p><br></p>
+
+<p>You can also write an ordered list using the <code>&lt;ul&gt;</code> tag</p>
+
+<p><br></p>
+
+<ul>
+  <li>Notice that this list uses bullets</li>
+  <li>And that everything in the list... </li>
+  <li> starts at the same point</li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-23'>
+  <h3>Nested text lists</h3>
+  <p><br>
+I haven&#39;t found a good way of making line breaks in a nested list without using HTML tags just yet:
+<br>
+<br></p>
+
+<ul>
+<li>Choice A</li>
+<br>
+<li>Choice B
+  <ol>
+    <li>Sub item 1</li>
+    <li>Sub item 2</li>
+  </ol>
+</li>
+<br>
+<li>Choice C</li>
+<br>
+</ul>  
+  
+
+</section>
+<section class='' data-state='' id='slide-24'>
+  <h3>Formatting text lists</h3>
+  <p><br></p>
+
+<p>Sometimes you might want to change the types of bullet used:</p>
+
+<p><br></p>
+
+<ul style="list-style-type:circle">
+  <li>Circles</li>
+  <li>are produced by changing</li>
+  <li>the ul style using css</li>
+</ul>
+
+<p><br></p>
+
+<ul style="list-style-type:square">
+  <li>Squares</li>
+  <li>are produced by changing</li>
+  <li>the ul style using css </li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-25'>
   <h3>Adding in an image</h3>
-  <p>You can do this for each individual slide using HTML...</p>
+  <p>You can do this for each individual slide using HTML if you want to change positioning or size...</p>
 
 <p><br></p>
 
 <div style='text-align: center;'>
-    <img height='500' src='https://extension.unh.edu/sites/default/files/images/4HAnSci/inquisitive-cat300.png' />
+    <img height='400' src='https://extension.unh.edu/sites/default/files/images/4HAnSci/inquisitive-cat300.png' />
 </div>
 
 </section>
-<section class='' data-state='' id='slide-17'>
+<section class='' data-state='' id='slide-26'>
   <h3>Images plus text in columns</h3>
   <p>This is some text that is going above the columns</p>
 
@@ -363,15 +518,146 @@ It&#39;s also possible to make things appear out of sequence on the screen:</p>
   
 </div>
 </section>
-<section class='' data-state='' id='slide-18'>
-  <h3>Images in a row</h3>
-  <div id="images">
-<img height='200' width= '150' src="http://upload.wikimedia.org/wikipedia/commons/7/77/Small_stellated_dodecahedron.png">
-<img height='200' width= '150' src="http://upload.wikimedia.org/wikipedia/commons/7/77/Small_stellated_dodecahedron.png">
-<img height='200' width= '150' src="http://upload.wikimedia.org/wikipedia/commons/7/77/Small_stellated_dodecahedron.png">
-<img height='200' width= '150' src="http://upload.wikimedia.org/wikipedia/commons/7/77/Small_stellated_dodecahedron.png">
+<section class='' data-state='' id='slide-27'>
+  <h3>Two Column Layout</h3>
+  <p>This slide has two columns of unequal widths</p>
+
+<p><br></p>
+
+<div style='float:left;width:28%;' class='centered'>
+  <div style='text-align: center;'>
+    <img height='380' width= '300' src='http://www.wildlifeextra.com/resources/listimg/world/Africa_13/meerkat@body.jpg' />
 </div>
 
+</div>
+<div style='float:right;width:68%;'>
+  <p><p align="justify"><font size="5"><span style="color:teal;">  - this side is much wider than the picture side of the slide, and takes up far more space </p></font></style></p>
+
+<p><br></p>
+
+<p><p align="justify"><font size="5"><span style="color:teal;">  - this is done by saving a default layout in assets/layouts and referring to it at the slide divider </p></font></style></p>
+
+<p><br></p>
+
+<p><p align="justify"><font size="5"><span style="color:teal;">   - the width of the picture is 300px </p></font></style></p>
+
+</div>
+<div style='float:center;width:100%'>
+  
+</div>
+</section>
+<section class='' data-state='' id='slide-28'>
+  <h3>Three Column Layout</h3>
+  <p>This slide has three columns of equal widths</p>
+
+<p><br></p>
+
+<div style='float:left;width:30%;' class='centered'>
+  <p>text on the left</p>
+
+</div>
+<div style='float:center;width:30%;'>
+  <p>text in the middle</p>
+
+</div>
+<div style='float:right;width:30%'>
+  <p>text on the right</p>
+
+</div>
+<div style='float:center;width:100%'>
+  
+</div>
+</section>
+<section class='' data-state='' id='slide-29'>
+  <h3>Three Column Layout</h3>
+  <p>This slide has three columns of equal widths</p>
+
+<p><br></p>
+
+<div style='float:left;width:30%;' class='centered'>
+  <div style='text-align: center;'>
+    <img height='150' width= '100' src='http://thefeaturedcreature.com/wp-content/uploads/2012/10/16840_gross1.jpg' />
+</div>
+
+</div>
+<div style='float:center;width:30%;'>
+  <div style='text-align: center;'>
+    <img height='150' width= '100' src='http://featuredcreature.com/wp-content/uploads/2011/07/Capture.jpg' />
+</div>
+
+</div>
+<div style='float:right;width:30%'>
+  <div style='text-align: center;'>
+    <img height='150' width= '100' src='http://thefeaturedcreature.com/wp-content/uploads/2012/10/histrionica1.jpg' />
+</div>
+
+</div>
+<div style='float:center;width:100%'>
+  
+</div>
+</section>
+<section class='' data-state='' id='slide-30'>
+  <h3>Figure captions</h3>
+  <p><br></p>
+
+<p>to do</p>
+
+</section>
+<section class='' data-state='' id='slide-31'>
+  <h3>A dividing line</h3>
+  <hr noshade size=4 color='red'>
+
+<p><br></p>
+
+<p>Above this text is a line that is red and right underneath the header.</p>
+
+<p><br></p>
+
+<p>Although this is working, I&#39;m not sure if this is the best way to do this as the <code>&lt;hr&gt;</code> tag is not supposed to be used in HTML5</p>
+
+</section>
+<section class='' data-state='' id='slide-32'>
+  <h3>Backgrounds</h3>
+  
+</section>
+<section class='' data-state='soothe' id='slide-33'>
+  
+  <p>&quot;soothe&quot;</p>
+
+</section>
+<section class='' data-state='alert' id='slide-34'>
+  
+  <p>&quot;alert&quot;</p>
+
+</section>
+<section class='' data-state='mint' id='slide-35'>
+  
+  <p>&quot;mint&quot;</p>
+
+</section>
+<section class='' data-state='blackout' id='slide-36'>
+  
+  <p>&quot;blackout&quot;</p>
+
+</section>
+<section class='' data-state='whiteout' id='slide-37'>
+  
+  <p>&quot;whiteout&quot;</p>
+
+</section>
+<section class='' data-state='sunset' id='slide-38'>
+  
+  <p>&quot;sunset&quot;</p>
+
+</section>
+<section class='' data-state='greenjs' id='slide-39'>
+  
+  <p>And finally a custom one in /assets/css/custom.css.</p>
+
+</section>
+<section class='' data-state='' id='slide-40'>
+  
+  
 </section>
     </div>
   </div>
