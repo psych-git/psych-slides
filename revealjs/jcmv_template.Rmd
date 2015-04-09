@@ -898,4 +898,32 @@ Saving the same `mp4` video file to the `assets/img` folder also works using the
 
 And finally a custom one in /assets/css/custom.css.
 
----
+
+
+--- ds:tablet01
+
+### Making A Table
+
+<table id="t01" style="width:100%">
+<caption>This is a caption</caption>
+<tr>
+    <th>Firstname</th>
+    <th>Lastname</th> 
+    <th>Points</th>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td> 
+    <td>94</td>
+  </tr>
+  <tr>
+    <td>John</td>
+    <td>Doe</td>    
+    <td>80</td>
+  </tr>
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td> 
+    <td>50</td>
+  </tr>
+</table>

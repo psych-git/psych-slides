@@ -52,3 +52,24 @@
     background: rgba( 50, 200, 90, 0.9 );
 }
 
+
+
+.tableto1
+
+table#t01 {
+    width: 100%; 
+    background-color: #f1f1c1;
+}
+
+table#t01 th {
+    color: black;
+    background-color: orange;
+}
+table#t01 tr:nth-child(even) {
+    color: black;
+    background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+    color: black;
+    background-color: #fff;
+}
