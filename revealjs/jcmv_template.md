@@ -241,7 +241,7 @@ revealjs    : {theme: moon, transition: none, center: "false"}
   color: black;
   width: 67%;
   height: 33%;
-	background: #BDB76B;
+  background: #BDB76B;
     
 }
 ```

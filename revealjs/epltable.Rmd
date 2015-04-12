@@ -1,0 +1,166 @@
+---
+title       : 
+subtitle    : 
+author      : 
+job         : 
+framework   : revealjs
+revealjs    : {theme: sky, transition: none, center: "false"} 
+highlighter : highlight.js
+hitheme     : github 
+widgets     : [mathjax]
+mode        : selfcontained 
+url         : {lib: ./libraries}
+knit        : slidify::knit2slides
+assets:
+  js:
+    - "http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"
+    - "http://bartaz.github.io/sandbox.js/jquery.highlight.js"
+---
+
+
+
+<style>
+
+.reveal h4 {
+    color: #380000;
+    padding-bottom: 10px;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+.reveal h3 {
+    color: #380000;
+    padding-bottom: 10px;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+.reveal h2 {
+    color: #380000;
+    padding-bottom: 10px;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+.reveal p {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+.reveal body {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+
+</style>
+
+
+
+
+### formattable + slidify
+
+<br>
+
+[formattable](https://github.com/renkun-ken/formattable) is package by Kun Ren that makes formatting pretty tables in RMarkdown very easy!
+
+
+<br>
+
+[slidify](http://ramnathv.github.io/slidify/) is a package by Ramnath Vaidyanathan that makes making HTML slides in RMarkdown easy to make!
+
+<br>
+
+Here, I'm trying to use the two together...
+
+
+---
+
+### Example Table
+
+<small>Data come from my [engsoccerdata]((https://github.com/jalapic/engsoccerdata) package - these are summary stats for EPL teams 1992-2014 that played at least 400 games.</small>
+
+
+```{r, echo=FALSE}
+library(engsoccerdata)
+library(dplyr)
+specify_decimal <- function(x, k) format(round(x, k), nsmall=k)
+mydf <- engsoccerdata2 %>% filter(Season>=1992  & tier==1) 
+myt <- rbind(mydf %>% select(team=home, opp=visitor, gf=hgoal, ga=vgoal), 
+      mydf %>% select(team=visitor, opp=home, gf=vgoal, ga=hgoal)) %>%
+  group_by(team) %>%
+  summarize(gp = n(), 
+            wins=sum(gf>ga), 
+            losses=sum(ga>gf), 
+            draws=sum(gf==ga), 
+            points=(wins*3)+draws,
+            ppg = round((points/gp),2),
+            winpct = specify_decimal((wins/gp),2)
+            ) %>%
+  arrange(desc(points))
+
+myt400 <- myt %>% filter(gp>400)
+myt400
+```
+
+---
+
+#### Change format of the table in the following ways:
+
+<div style='text-align: left; font-size: 75%;'>
+
+<br>
+
+&#10137;&nbsp;&nbsp; winpct is blue if the value is greater than 75%-quantile
+
+<br>
+<br>
+
+&#10137;&nbsp;&nbsp; games played is bold when the value is equal to 848
+
+<br>
+<br>
+
+&#10137;&nbsp;&nbsp; points and ppg is colorized by rank
+
+</div>
+
+
+---
+
+<small>
+```{r, echo=F}
+library(formattable)
+formattable(myt400, list(
+  winpct = formatter("span", style = function(x)
+    style(color = ifelse(x > quantile(x, 0.75), "mediumblue", NA))),
+  gp = formatter("span", style = function(x)
+    style("font-weight" = ifelse(x == 848, "bold", NA))),
+ points = formatter("span", style = function(x, m = 1 - x/max(x) * 0.8, ms = round(1-m)) 
+    style("display" = "block", "border-radius" = "4px", "background-color" = rgb(0, m, 0),
+          "padding-right" = "4px", "color" = rgb(1,1,1))),
+   ppg = formatter("span", style = function(x, m = 1-x/max(x), ms = round(1-m))
+    style("display" = "block", "border-radius" = "4px", "padding-right" = "4px",
+          "background-color" = rgb(m, m, 0), "color" = rgb(ms,ms,ms)))))
+
+```
+</small>
+
+
+---
+
+#### The code
+
+```{r,eval=FALSE}
+library(formattable)
+formattable(myt400, list(
+  winpct = formatter("span", style = function(x)
+    style(color = ifelse(x > quantile(x, 0.75), "mediumblue", NA))),
+  gp = formatter("span", style = function(x)
+    style("font-weight" = ifelse(x == 848, "bold", NA))),
+ points = formatter("span", style = function(x, m = 1 - x/max(x) * 0.8, ms = round(1-m)) 
+    style("display" = "block", "border-radius" = "4px", "background-color" = rgb(0, m, 0),
+          "padding-right" = "4px", "color" = rgb(1,1,1))),
+   ppg = formatter("span", style = function(x, m = 1-x/max(x), ms = round(1-m))
+    style("display" = "block", "border-radius" = "4px", "padding-right" = "4px",
+          "background-color" = rgb(m, m, 0), "color" = rgb(ms,ms,ms)))))
+
+```
+
+<br>
+<small>Also, I wrapped the R code chunk in `<small>` tags</small>
