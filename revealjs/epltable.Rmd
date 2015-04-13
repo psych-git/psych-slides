@@ -73,7 +73,7 @@ Here, I'm trying to use the two together...
 
 ### Example Table
 
-<small>Data come from my [engsoccerdata]((https://github.com/jalapic/engsoccerdata) package - these are summary stats for EPL teams 1992-2014 that played at least 400 games.</small>
+<small>Data come from my [engsoccerdata](https://github.com/jalapic/engsoccerdata) package - these are summary stats for EPL teams 1992-2014 that played at least 400 games.</small>
 
 
 ```{r, echo=FALSE}
