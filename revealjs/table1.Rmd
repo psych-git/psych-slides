@@ -179,7 +179,7 @@ The following slides give you some example tables styles that can be written int
 
 <br>
 
-All of these tables do require you to write out the table in the long HTML format.  This is fine for tiny tables like the example here, but would be super annoying for any large table.   There are options for turning R output into HTML style code, but I haven't worked out what might be the best solution just yet.
+The first set of table examples require you to write out the table in the long HTML format.  This is fine for tiny tables like the example here, but would be super annoying for any large table.   There are options for turning R output into HTML style code, but I haven't worked out what might be the best solution just yet.  In the last few slides I introduce a little function I wrote to turn a data.frame straight into a nice looking table in one line !
 
 <br>
 All of the following are created by simply modifying the custom css.
@@ -591,4 +591,179 @@ All of the following are created by simply modifying the custom css.
     <td data-th="Bird">Northern mockingbird</td>
   </tr>
 </table>
+
+
+---
+
+<br>
+Making these tables is great, but nobody wants to write out a bunch of HTML code to make a table.  It's easy to make an error, it's boring and it's annoying.  
+
+<br>
+
+I have a temporary solution - I have written a little function that takes two arguments. <br><br> 1) the <font color="red">`name of the dataframe`</font> that I want to turn into a pretty looking table on my slide <br> <br> 2) the <font color="red">`tabletype`</font> I want it to end up as - i.e. the css format guide for tables that I've predefined in my css.
+
+
+
+---
+
+<br>
+
+This is the function - it's ugly. If anybody wants to help me improve it, then great.
+<br>
+<br>
+
+```{r}
+tablecode <- function(df, tabletype="gridtable"){
+tmp <- noquote(apply(df, 1, function(x) paste0("<td data-th='", sprintf("%s",colnames(df)), "'>", x, "</td>", collapse=" ")))
+
+cat(
+c(
+noquote(paste0("<table id='", tabletype,"' style='width:100%'> ")),    
+noquote(paste0("<tr>", paste0("<th>", sprintf("%s",colnames(df)), "</th>", collapse=" "), "</tr>")),
+noquote(unlist(lapply(tmp, function(x) paste0("<tr>", x, "</tr>")))),
+noquote("</table>")
+)
+)
+
+}
+```
+
+---
+
+<br>
+
+The default `tabletype` is <font color="red">gridtable</font>
+<br>
+<br>The other types you can use are:  <font color="red">zebra, zebra1, box, minimal, onecol, simple, hoverTable, flattable, flattable3, another</font>.
+<br><br>
+
+You have to have added the css for these into your `custom.css` file in your `assets/css` folder.
+
+---
+
+<br>
+Let's try this using a different table.
+<br>
+<br>
+
+```{r}
+
+paintings <- data.frame(
+Painting = c("Nafea Faa Ipoipo", "The Card Players", "Le Reve", "Three Studies of Lucian Freud", "No. 5, 1948"),
+Artist = c("Paul Gauguin", "Paul Cezanne", "Pablo Picasso", "Francis Bacon", "Jackson Pollock"),
+Year = c(1892, 1892, 1932, 1969, 1948),
+Price = c("$300M", "$259M", "$155M", "$142M", "$140M")
+)
+
+paintings
+
+```
+
+---
+
+The function is very simple:
+<br>
+
+```{r}
+tablecode(paintings, tabletype="onecol")
+```
+
+<br>
+
+This output can simply be copied and pasted into the RMarkdown document between two slide separators to produce the desired table...
+
+---
+
+
+I copied and pasted the output of `tablecode(paintings)` into my RMarkdown document and it works!
+
+<br>
+
+<table id='onecol' style='width:100%'>  <tr><th>Painting</th> <th>Artist</th> <th>Year</th> <th>Price</th></tr> <tr><td data-th='Painting'>Nafea Faa Ipoipo</td> <td data-th='Artist'>Paul Gauguin</td> <td data-th='Year'>1892</td> <td data-th='Price'>$300M</td></tr> <tr><td data-th='Painting'>The Card Players</td> <td data-th='Artist'>Paul Cezanne</td> <td data-th='Year'>1892</td> <td data-th='Price'>$259M</td></tr> <tr><td data-th='Painting'>Le Reve</td> <td data-th='Artist'>Pablo Picasso</td> <td data-th='Year'>1932</td> <td data-th='Price'>$155M</td></tr> <tr><td data-th='Painting'>Three Studies of Lucian Freud</td> <td data-th='Artist'>Francis Bacon</td> <td data-th='Year'>1969</td> <td data-th='Price'>$142M</td></tr> <tr><td data-th='Painting'>No. 5, 1948</td> <td data-th='Artist'>Jackson Pollock</td> <td data-th='Year'>1948</td> <td data-th='Price'>$140M</td></tr> </table>
+
+---
+
+An even cooler solution is to add `results='asis'` to our R chunk options.  The below is what I would write at the top of my R chunk to produce the desired table:
+
+<br>
+
+```
+{r, results='asis', echo=FALSE}
+tablecode(paintings, tabletype="minimal")
+
+```
+
+<br>
+
+The next slide shows the output of this simple one line piece of code ...
+
+---
+
+```{r, results='asis', echo=FALSE}
+tablecode(paintings, tabletype="minimal")
+
+```
+
+<br>
+
+---
+
+<p style='font-size=12px'>
+<font color = 'red'>It worked !!!   </font>We can now write really nice looking tables with one function without having to write out HTML tables in longhand.  
+
+<br>
+<br>
+
+Just play around with all the settings in the different table templates in the custom.css file to get your table looking the way you want it. You can even add a new 'id' to the table to make it distinct.
+
+<br><br>
+
+If I get some  time, I may even work on extending this function to get it to add inline CSS to the RMarkdown document, thereby allowing the user to on the fly change cell heights, colors, padding, margins, font sizes etc. etc.  without having to go and change the custom.css file....   Anyone want to help then give me an email &#9786;
+</p>
+
+
+---
+
+#### Adding inline CSS to the RMarkdown document
+
+<br>
+
+The next table is produced by simply adding in the following code after the slide divider in our RMarkdown document.
+
+<br>
+
+```
+<style>
+table#another1 {border-collapse: collapse; border: 1px solid #900000; 
+background: #FFCCCC; font-family: 'Helvetica', 'Arial', sans-serif; font-size:16px; color: #003333; }
+table#another1 td, th { padding: 3px 3px .75em 3px; line-height: 1.3em; }
+table#another1 th {text-shadow: none; font-size:18px; background: #CC0000; color: white; font-weight: 200; text-align: left; padding-right: .1em;  padding-left: .2em; vertical-align: middle; }
+</style>
+```
+<br>
+
+and referring to it like this:
+
+```
+{r, results='asis', echo=FALSE}
+tablecode(paintings, tabletype="another1")
+
+```
+
+---
+
+<style>
+table#another1 {border-collapse: collapse; border: 1px solid #900000; 
+background: #FFCCCC; font-family: 'Helvetica', 'Arial', sans-serif; font-size:16px; color: #003333; }
+table#another1 td, th { padding: 3px 3px .75em 3px; line-height: 1.3em; }
+table#another1 th {text-shadow: none; font-size:18px; background: #CC0000; color: white; font-weight: 200; text-align: left; padding-right: .1em;  padding-left: .2em; vertical-align: middle; }
+</style>
+
+
+```{r, results='asis', echo=FALSE}
+tablecode(paintings, tabletype="another1")
+
+```
+
+<br>
 

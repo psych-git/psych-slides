@@ -188,7 +188,7 @@ table#gridtable td {border-width: 1px; padding: 8px; border-style: solid; border
 
 <p><br></p>
 
-<p>All of these tables do require you to write out the table in the long HTML format.  This is fine for tiny tables like the example here, but would be super annoying for any large table.   There are options for turning R output into HTML style code, but I haven&#39;t worked out what might be the best solution just yet.</p>
+<p>The first set of table examples require you to write out the table in the long HTML format.  This is fine for tiny tables like the example here, but would be super annoying for any large table.   There are options for turning R output into HTML style code, but I haven&#39;t worked out what might be the best solution just yet.  In the last few slides I introduce a little function I wrote to turn a data.frame straight into a nice looking table in one line !</p>
 
 <p><br>
 All of the following are created by simply modifying the custom css.</p>
@@ -572,6 +572,182 @@ All of the following are created by simply modifying the custom css.</p>
     <td data-th="Bird">Northern mockingbird</td>
   </tr>
 </table>
+
+</section>
+<section class='' data-state='' id='slide-17'>
+  
+  <p><br>
+Making these tables is great, but nobody wants to write out a bunch of HTML code to make a table.  It&#39;s easy to make an error, it&#39;s boring and it&#39;s annoying.  </p>
+
+<p><br></p>
+
+<p>I have a temporary solution - I have written a little function that takes two arguments. <br><br> 1) the <font color="red"><code>name of the dataframe</code></font> that I want to turn into a pretty looking table on my slide <br> <br> 2) the <font color="red"><code>tabletype</code></font> I want it to end up as - i.e. the css format guide for tables that I&#39;ve predefined in my css.</p>
+
+</section>
+<section class='' data-state='' id='slide-18'>
+  
+  <p><br></p>
+
+<p>This is the function - it&#39;s ugly. If anybody wants to help me improve it, then great.
+<br>
+<br></p>
+
+<pre><code class="r">tablecode &lt;- function(df, tabletype=&quot;gridtable&quot;){
+tmp &lt;- noquote(apply(df, 1, function(x) paste0(&quot;&lt;td data-th=&#39;&quot;, sprintf(&quot;%s&quot;,colnames(df)), &quot;&#39;&gt;&quot;, x, &quot;&lt;/td&gt;&quot;, collapse=&quot; &quot;)))
+
+cat(
+c(
+noquote(paste0(&quot;&lt;table id=&#39;&quot;, tabletype,&quot;&#39; style=&#39;width:100%&#39;&gt; &quot;)),    
+noquote(paste0(&quot;&lt;tr&gt;&quot;, paste0(&quot;&lt;th&gt;&quot;, sprintf(&quot;%s&quot;,colnames(df)), &quot;&lt;/th&gt;&quot;, collapse=&quot; &quot;), &quot;&lt;/tr&gt;&quot;)),
+noquote(unlist(lapply(tmp, function(x) paste0(&quot;&lt;tr&gt;&quot;, x, &quot;&lt;/tr&gt;&quot;)))),
+noquote(&quot;&lt;/table&gt;&quot;)
+)
+)
+
+}
+</code></pre>
+
+</section>
+<section class='' data-state='' id='slide-19'>
+  
+  <p><br></p>
+
+<p>The default <code>tabletype</code> is <font color="red">gridtable</font>
+<br>
+<br>The other types you can use are:  <font color="red">zebra, zebra1, box, minimal, onecol, simple, hoverTable, flattable, flattable3, another</font>.
+<br><br></p>
+
+<p>You have to have added the css for these into your <code>custom.css</code> file in your <code>assets/css</code> folder.</p>
+
+</section>
+<section class='' data-state='' id='slide-20'>
+  
+  <p><br>
+Let&#39;s try this using a different table.
+<br>
+<br></p>
+
+<pre><code class="r">paintings &lt;- data.frame(
+Painting = c(&quot;Nafea Faa Ipoipo&quot;, &quot;The Card Players&quot;, &quot;Le Reve&quot;, &quot;Three Studies of Lucian Freud&quot;, &quot;No. 5, 1948&quot;),
+Artist = c(&quot;Paul Gauguin&quot;, &quot;Paul Cezanne&quot;, &quot;Pablo Picasso&quot;, &quot;Francis Bacon&quot;, &quot;Jackson Pollock&quot;),
+Year = c(1892, 1892, 1932, 1969, 1948),
+Price = c(&quot;$300M&quot;, &quot;$259M&quot;, &quot;$155M&quot;, &quot;$142M&quot;, &quot;$140M&quot;)
+)
+
+paintings
+</code></pre>
+
+<pre><code>##                        Painting          Artist Year Price
+## 1              Nafea Faa Ipoipo    Paul Gauguin 1892 $300M
+## 2              The Card Players    Paul Cezanne 1892 $259M
+## 3                       Le Reve   Pablo Picasso 1932 $155M
+## 4 Three Studies of Lucian Freud   Francis Bacon 1969 $142M
+## 5                   No. 5, 1948 Jackson Pollock 1948 $140M
+</code></pre>
+
+</section>
+<section class='' data-state='' id='slide-21'>
+  
+  <p>The function is very simple:
+<br></p>
+
+<pre><code class="r">tablecode(paintings, tabletype=&quot;onecol&quot;)
+</code></pre>
+
+<pre><code>## &lt;table id=&#39;onecol&#39; style=&#39;width:100%&#39;&gt;  &lt;tr&gt;&lt;th&gt;Painting&lt;/th&gt; &lt;th&gt;Artist&lt;/th&gt; &lt;th&gt;Year&lt;/th&gt; &lt;th&gt;Price&lt;/th&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td data-th=&#39;Painting&#39;&gt;Nafea Faa Ipoipo&lt;/td&gt; &lt;td data-th=&#39;Artist&#39;&gt;Paul Gauguin&lt;/td&gt; &lt;td data-th=&#39;Year&#39;&gt;1892&lt;/td&gt; &lt;td data-th=&#39;Price&#39;&gt;$300M&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td data-th=&#39;Painting&#39;&gt;The Card Players&lt;/td&gt; &lt;td data-th=&#39;Artist&#39;&gt;Paul Cezanne&lt;/td&gt; &lt;td data-th=&#39;Year&#39;&gt;1892&lt;/td&gt; &lt;td data-th=&#39;Price&#39;&gt;$259M&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td data-th=&#39;Painting&#39;&gt;Le Reve&lt;/td&gt; &lt;td data-th=&#39;Artist&#39;&gt;Pablo Picasso&lt;/td&gt; &lt;td data-th=&#39;Year&#39;&gt;1932&lt;/td&gt; &lt;td data-th=&#39;Price&#39;&gt;$155M&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td data-th=&#39;Painting&#39;&gt;Three Studies of Lucian Freud&lt;/td&gt; &lt;td data-th=&#39;Artist&#39;&gt;Francis Bacon&lt;/td&gt; &lt;td data-th=&#39;Year&#39;&gt;1969&lt;/td&gt; &lt;td data-th=&#39;Price&#39;&gt;$142M&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td data-th=&#39;Painting&#39;&gt;No. 5, 1948&lt;/td&gt; &lt;td data-th=&#39;Artist&#39;&gt;Jackson Pollock&lt;/td&gt; &lt;td data-th=&#39;Year&#39;&gt;1948&lt;/td&gt; &lt;td data-th=&#39;Price&#39;&gt;$140M&lt;/td&gt;&lt;/tr&gt; &lt;/table&gt;
+</code></pre>
+
+<p><br></p>
+
+<p>This output can simply be copied and pasted into the RMarkdown document between two slide separators to produce the desired table...</p>
+
+</section>
+<section class='' data-state='' id='slide-22'>
+  
+  <p>I copied and pasted the output of <code>tablecode(paintings)</code> into my RMarkdown document and it works!</p>
+
+<p><br></p>
+
+<table id='onecol' style='width:100%'>  <tr><th>Painting</th> <th>Artist</th> <th>Year</th> <th>Price</th></tr> <tr><td data-th='Painting'>Nafea Faa Ipoipo</td> <td data-th='Artist'>Paul Gauguin</td> <td data-th='Year'>1892</td> <td data-th='Price'>$300M</td></tr> <tr><td data-th='Painting'>The Card Players</td> <td data-th='Artist'>Paul Cezanne</td> <td data-th='Year'>1892</td> <td data-th='Price'>$259M</td></tr> <tr><td data-th='Painting'>Le Reve</td> <td data-th='Artist'>Pablo Picasso</td> <td data-th='Year'>1932</td> <td data-th='Price'>$155M</td></tr> <tr><td data-th='Painting'>Three Studies of Lucian Freud</td> <td data-th='Artist'>Francis Bacon</td> <td data-th='Year'>1969</td> <td data-th='Price'>$142M</td></tr> <tr><td data-th='Painting'>No. 5, 1948</td> <td data-th='Artist'>Jackson Pollock</td> <td data-th='Year'>1948</td> <td data-th='Price'>$140M</td></tr> </table>
+
+</section>
+<section class='' data-state='' id='slide-23'>
+  
+  <p>An even cooler solution is to add <code>results=&#39;asis&#39;</code> to our R chunk options.  The below is what I would write at the top of my R chunk to produce the desired table:</p>
+
+<p><br></p>
+
+<pre><code>{r, results=&#39;asis&#39;, echo=FALSE}
+tablecode(paintings, tabletype=&quot;minimal&quot;)
+
+</code></pre>
+
+<p><br></p>
+
+<p>The next slide shows the output of this simple one line piece of code ...</p>
+
+</section>
+<section class='' data-state='' id='slide-24'>
+  
+  <table id='minimal' style='width:100%'>  <tr><th>Painting</th> <th>Artist</th> <th>Year</th> <th>Price</th></tr> <tr><td data-th='Painting'>Nafea Faa Ipoipo</td> <td data-th='Artist'>Paul Gauguin</td> <td data-th='Year'>1892</td> <td data-th='Price'>$300M</td></tr> <tr><td data-th='Painting'>The Card Players</td> <td data-th='Artist'>Paul Cezanne</td> <td data-th='Year'>1892</td> <td data-th='Price'>$259M</td></tr> <tr><td data-th='Painting'>Le Reve</td> <td data-th='Artist'>Pablo Picasso</td> <td data-th='Year'>1932</td> <td data-th='Price'>$155M</td></tr> <tr><td data-th='Painting'>Three Studies of Lucian Freud</td> <td data-th='Artist'>Francis Bacon</td> <td data-th='Year'>1969</td> <td data-th='Price'>$142M</td></tr> <tr><td data-th='Painting'>No. 5, 1948</td> <td data-th='Artist'>Jackson Pollock</td> <td data-th='Year'>1948</td> <td data-th='Price'>$140M</td></tr> </table>
+
+<p><br></p>
+
+</section>
+<section class='' data-state='' id='slide-25'>
+  
+  <p style='font-size=12px'>
+<font color = 'red'>It worked !!!   </font>We can now write really nice looking tables with one function without having to write out HTML tables in longhand.  
+
+<br>
+<br>
+
+Just play around with all the settings in the different table templates in the custom.css file to get your table looking the way you want it. You can even add a new 'id' to the table to make it distinct.
+
+<br><br>
+
+If I get some  time, I may even work on extending this function to get it to add inline CSS to the RMarkdown document, thereby allowing the user to on the fly change cell heights, colors, padding, margins, font sizes etc. etc.  without having to go and change the custom.css file....   Anyone want to help then give me an email &#9786;
+</p>
+
+</section>
+<section class='' data-state='' id='slide-26'>
+  <h4>Adding inline CSS to the RMarkdown document</h4>
+  <p><br></p>
+
+<p>The next table is produced by simply adding in the following code after the slide divider in our RMarkdown document.</p>
+
+<p><br></p>
+
+<pre><code>&lt;style&gt;
+table#another1 {border-collapse: collapse; border: 1px solid #900000; 
+background: #FFCCCC; font-family: &#39;Helvetica&#39;, &#39;Arial&#39;, sans-serif; font-size:16px; color: #003333; }
+table#another1 td, th { padding: 3px 3px .75em 3px; line-height: 1.3em; }
+table#another1 th {text-shadow: none; font-size:18px; background: #CC0000; color: white; font-weight: 200; text-align: left; padding-right: .1em;  padding-left: .2em; vertical-align: middle; }
+&lt;/style&gt;
+</code></pre>
+
+<p><br></p>
+
+<p>and referring to it like this:</p>
+
+<pre><code>{r, results=&#39;asis&#39;, echo=FALSE}
+tablecode(paintings, tabletype=&quot;another1&quot;)
+
+</code></pre>
+
+</section>
+<section class='' data-state='' id='slide-27'>
+  
+  <style>
+table#another1 {border-collapse: collapse; border: 1px solid #900000; 
+background: #FFCCCC; font-family: 'Helvetica', 'Arial', sans-serif; font-size:16px; color: #003333; }
+table#another1 td, th { padding: 3px 3px .75em 3px; line-height: 1.3em; }
+table#another1 th {text-shadow: none; font-size:18px; background: #CC0000; color: white; font-weight: 200; text-align: left; padding-right: .1em;  padding-left: .2em; vertical-align: middle; }
+</style>
+
+<table id='another1' style='width:100%'>  <tr><th>Painting</th> <th>Artist</th> <th>Year</th> <th>Price</th></tr> <tr><td data-th='Painting'>Nafea Faa Ipoipo</td> <td data-th='Artist'>Paul Gauguin</td> <td data-th='Year'>1892</td> <td data-th='Price'>$300M</td></tr> <tr><td data-th='Painting'>The Card Players</td> <td data-th='Artist'>Paul Cezanne</td> <td data-th='Year'>1892</td> <td data-th='Price'>$259M</td></tr> <tr><td data-th='Painting'>Le Reve</td> <td data-th='Artist'>Pablo Picasso</td> <td data-th='Year'>1932</td> <td data-th='Price'>$155M</td></tr> <tr><td data-th='Painting'>Three Studies of Lucian Freud</td> <td data-th='Artist'>Francis Bacon</td> <td data-th='Year'>1969</td> <td data-th='Price'>$142M</td></tr> <tr><td data-th='Painting'>No. 5, 1948</td> <td data-th='Artist'>Jackson Pollock</td> <td data-th='Year'>1948</td> <td data-th='Price'>$140M</td></tr> </table>
+
+<p><br></p>
 
 </section>
     </div>
